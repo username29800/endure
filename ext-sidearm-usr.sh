@@ -3,7 +3,6 @@
 #usage: [script path] [hostkey(private)]
 prefix=$(cat prefix)
 mkdir $prefix
-cd $prefix/
 mkdir $prefix/sidearmconnect
 chmod -R 755 $prefix/sidearmconnect
 rm $prefix/sidearmconnect/sacsshhkey/key
