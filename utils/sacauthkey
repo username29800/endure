@@ -1,7 +1,8 @@
 #!/bin/sh
 sprefix=$(cat sprefix)
+prefix=$(cat prefix)
 echo '' >> $sprefix/.ssh/authorized_keys
-cat $sprefix/sacsshckey/key"$1" >> $sprefix/.ssh/authorized_keys
+cat $prefix/sidearmconnect/sacsshckey/key"$1" >> $sprefix/.ssh/authorized_keys
 echo '' >> $sprefix/.ssh/authorized_keys
 chmod 0700 $sprefix/.ssh
 chmod 0600 $sprefix/.ssh/authorized_keys
