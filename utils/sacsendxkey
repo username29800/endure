@@ -6,4 +6,4 @@ prefix=$(cat prefix)
 rprefix=$(cat rprefix)
 ruser=$4
 xauth list | grep -n '.\?' | grep '^'$line':' | sed 's,^[0-9]*:,,' > $prefix/sidearmconnect/sacfwdkey/key
-scp -i $prefix/sidearmconnect/sacfwdkey/key -O -P "$port" "$fsource" $ruser@$remote:$rprefix/sidearmconnect/rcvdest/"$fdest"
+scp -i $prefix/sidearmconnect/sacsshhkey/key -O -P "$port" "$prefix"/sidearmconnect/sacfwdkey/key $ruser@$remote:$rprefix/sidearmconnect/rcvdest/xauth
