@@ -1,3 +1,4 @@
 #!/bin/sh
 echo usage: 'remote/local host [port] [key index(identifier)]'
-ssh -X -p "$2" -i '/sacsshhkey/key' sidearmconnect@"$1"
+prefix=$(cat prefix)
+ssh -X -p "$2" -i $prefix'/sidearmconnect/sacsshhkey/key' $3@"$1"

@@ -1,4 +1,5 @@
 #!/bin/sh
-chmod 0600 /sacsshhkey/key
-chmod 0600 /sacsshpkey/key
-/usr/sbin/sshd -h /sacsshhkey/key -p "$1"
+prefix=$(cat prefix)
+chmod 0600 $prefix/sidearmconnect/sacsshhkey/key
+chmod 0600 $prefix/sidearmconnect/sacsshpkey/key
+/usr/sbin/sshd -h $prefix/sidearmconnect/sacsshhkey/key -p "$1"
