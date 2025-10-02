@@ -1,2 +1,3 @@
 #!/bin/sh
-xauth add $(cat /home/sidearmconnect/rcvdest/xauthkey)
+prefix=$(cat prefix)
+xauth add $(cat $prefix/sidearmconnect/rcvdest/xauthkey)
