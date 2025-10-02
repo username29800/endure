@@ -1,0 +1,3 @@
+#!/bin/sh
+prefix=$(cat prefix)
+sed -i 's,^[^ ]* ,'"$1"',' $prefix/sidearmconnect/rcvdest/xauthkey
