@@ -3,5 +3,7 @@ host=$1
 port=$2
 line=$3
 prefix=$(cat prefix)
+rprefix=$(cat rprefix)
+ruser=$4
 xauth list | grep -n '.\?' | grep '^'$line':' | sed 's,^[0-9]*:,,' > $prefix/sidearmconnect/sacfwdkey/key
-/utils/sacsendf $host $port $prefix/sidearmconnect/sacfwdkey/key xauthkey
+/utils/sacsendf $host $port $prefix/sidearmconnect/sacfwdkey/key xauthkey $ruser
