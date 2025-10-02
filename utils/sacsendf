@@ -6,4 +6,4 @@ fdest="$4"
 prefix=$(cat prefix)
 ruser=$5
 rprefix=$(cat rprefix)
-scp -i $prefix/sacsshhkey/key -O -P "$port" "$fsource" $ruser@$remote":$rprefix/sidearmconnect/rcvdest/"$fdest"
+scp -i $prefix/sidearmconnect/sacsshhkey/key -O -P "$port" "$fsource" $ruser@$remote":$rprefix/sidearmconnect/rcvdest/"$fdest"
