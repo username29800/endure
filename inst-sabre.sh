@@ -1,5 +1,5 @@
 #!/bin/sh
-#prerequisites:
+#sabre: Sidearmconnect-Box Restricted Environment
 #usage: [script path] [hostkey(private)]
 prefix=$(cat prefix)
 mkdir $prefix
@@ -11,4 +11,3 @@ rm $prefix/sidearmconnect/sacsshpkey/key
 mkdir $prefix/sidearmconnect/sacsshhkey $prefix/sidearmconnect/sacsshpkey $prefix/sidearmconnect/sacfwdkey $prefix/sidearmconnect/sacsshckey $prefix/sidearmconnect/rcvdest $prefix/.ssh
 ln -sf "$(pwd | sed s,/$,,)"/"$1" $prefix/sidearmconnect/sacsshhkey/key
 ln -sf "$(pwd | sed s,/$,,)"/"$1".pub $prefix/sidearmconnect/sacsshpkey/key
-cp 
