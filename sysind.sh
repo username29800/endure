@@ -51,24 +51,6 @@ cp /utils/swsh /home/user/swsh
 echo "LD_PRELOAD=/system/lib64/libskcodec.so pulseaudio --load='module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1'" > /sndsrv
 sed -i 1i"#\!/bin/sh" /sndsrv
 chmod 755 /sndsrv
-echo "#\!/bin/sh" > /pinit
-echo 'proot -b /dev -b mem:/dev/shm -b rmem:/run/shm -b /proc -b /sys -r . -0 -l --sysvipc /bin/su -l $1' >> /pinit
-chmod 755 /pinit
-echo "#\!/bin/sh" > /cinit
-echo 'mount --bind /dev dev' >> /cinit
-echo 'mount --bind /proc proc' >> /cinit
-echo 'mount --bind /sys sys' >> /cinit
-echo 'chroot . /bin/su -c "'/initpty \$1 \$2'" root' >> /cinit
-echo 'umount dev' >> /cinit
-echo 'umount proc' >> /cinit
-echo 'umount sys' >> /cinit
-chmod 755 /cinit
-echo "#\!/bin/sh" > /initpty
-echo '"$2"'"mount -t devpts devpts /dev/pts" >> /initpty
-echo "chmod 666 /dev/pts/ptmx" >> /initpty
-echo "su -l "'"$1"' >> /initpty
-echo '"$2"'"umount /dev/pts" >> /initpty
-chmod 744 /initpty
 cd /build
 git clone https://github.com/naver/d2codingfont
 git clone https://github.com/ohmyzsh/ohmyzsh
