@@ -1,6 +1,6 @@
 #!/bin/sh
-#usage: utils/sacpref (""|r|s) [index]
+#usage: utils/sacpref [index] (""|r|s)
 pprefix=$(cat pprefix)
-ptype=$1
-pindex=$2
+ptype=$2
+pindex=$1
 cat $pprefix/prefix.d/$ptype$(echo prefix).$pindex > $ptype$(echo prefix)
