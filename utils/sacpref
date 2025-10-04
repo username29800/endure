@@ -1,5 +1,8 @@
 #!/bin/sh
 #usage: utils/sacpref [index] (""|r|s)
+#prefix.d preset syntax: [type]prefix.[identifier]
+#type: "" / r / s
+#identifier is a random string
 pprefix=$(cat pprefix)
 ptype=$2
 pindex=$1
