@@ -4,6 +4,7 @@ pprefix=$(cat pprefix | sed 's,/$,,')
 prefix=$(cat prefix | sed 's,/$,,')
 sprefix=$(cat sprefix | sed 's,/$,,')
 rprefix=$(cat rprefix | sed 's,/$,,')
+pindex=$1
 echo $prefix > $pprefix/prefix.d/prefix.$pindex
 echo $sprefix > $pprefix/prefix.d/sprefix.$pindex
 echo $rprefix > $pprefix/prefix.d/rprefix.$pindex
