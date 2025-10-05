@@ -1,5 +1,5 @@
 #!/bin/sh
-#usage: utils/sacpref [index] (""|r|s)
+#usage: utils/sacpref [identifier] (""|r|s)
 #prefix.d preset syntax: [type]prefix.[identifier]
 #type: "" / r / s
 #identifier is a random string
