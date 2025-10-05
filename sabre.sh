@@ -7,7 +7,8 @@
 #example: echo . > prefix ; echo /home/user-example > sprefix ; echo /home/user-remote/endure > rprefix
 #usage: [script path] [hostkey(private)]
 prefix=$(cat prefix)
-mkdir prefix.d
+pprefix=$(cat pprefix)
+mkdir $pprefix/prefix.d
 mkdir $prefix
 mkdir $prefix/sidearmconnect
 chmod -R 755 $prefix/sidearmconnect
