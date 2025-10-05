@@ -1,0 +1,12 @@
+#!/bin/sh
+#usage: utils/sacprefa [identifier]
+#prefix.d preset syntax: [type]prefix.[identifier]
+#identifier is a random string
+pindex=$1
+pprefix=$(cat pprefix | sed 's,/$,,')
+prefix=$(cat $pprefix/prefix.d/prefix.$pindex | sed 's,/$,,')
+sprefix=$(cat $pprefix/prefix.d/sprefix.$pindex | sed 's,/$,,')
+rprefix=$(cat $pprefix/prefix.d/rprefix.$pindex | sed 's,/$,,')
+echo $prefix > prefix
+echo $sprefix > sprefix
+echo $rprefix > rprefix
