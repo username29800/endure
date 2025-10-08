@@ -3,6 +3,6 @@
 prefix=$(cat prefix)
 rfspath=$1
 mkdir $prefix/system
-cp -r ext-alpine* inst-alpine* pkg-alpine* cinit pinit initpty cinitc pinitc initptyc sysind.sh sabre.sh utils tools $prefix/system/
+cp -r ext-alpine* inst-alpine* pkg-alpine* cinit pinit initpty cinitc pinitc initptyc sysind.sh usrcnf.sh cnfnoroot.sh sabre.sh utils tools $prefix/system/
 cd $prefix/system
 #tar -xf $rfspath
