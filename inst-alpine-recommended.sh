@@ -8,14 +8,14 @@ echo .
 echo adding default users
 sleep .5
 adduser -D user
-adduser -D guest
+adduser -D guest0
 echo .
 echo configuring system
 sleep .5
 /usrcnf.sh user
 echo 'adduse.r/psw.d/g
-adduse.r/psw.d/g' | passwd guest
-su -lc 'cd && /cnfnoroot.sh' guest
+adduse.r/psw.d/g' | passwd guest0
+su -lc 'cd && /cnfnoroot.sh' guest0
 echo .
 echo installing and configuring linux-sidearm extension
 sleep .5
@@ -40,7 +40,7 @@ echo installing mate desktop environment
 sleep .5
 /ext-alpine-mate-desktop.sh
 chown -R user /home/user
-chown -R guest /home/guest
+chown -R guest0 /home/guest0
 echo .
 echo Congratulations. Installation complete!
 echo Now you can explore your brand new alpine-chroot environment
