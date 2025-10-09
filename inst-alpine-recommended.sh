@@ -2,30 +2,45 @@
 #run inside chroot/proot as root
 echo installing base packages
 sleep .5
+mkdir /build
 /pkg-alpine-cqgw.sh
 echo .
 echo adding default users
 sleep .5
 adduser -D user
-adduser -D sidearmconnect
+adduser -D guest
 echo .
 echo configuring system
 sleep .5
-/sysind.sh
+/usrcnf.sh user
+echo 'adduse.r/psw.d/g
+adduse.r/psw.d/g' | passwd guest
+su -lc 'cd && /cnfnoroot.sh' guest
 echo .
 echo installing and configuring linux-sidearm extension
 sleep .5
-mkdir /root/.ssh
-ssh-keygen -t rsa -N '' -f /root/.ssh/id_rsa
-/ext-sidearm-base.sh '' /root/.ssh/id_rsa
+mkdir /home/user
+mkdir /home/user/.ssh
+cd /home/user
+ssh-keygen -t rsa -N '' -f /home/user/.ssh/id_rsa
+mkdir /home/user/sabre
+cd /home/user/sabre
+echo s0 > prefix
+echo /home/user > sprefix
+echo . > pprefix
+/sabre.sh /home/user/.ssh/id_rsa
+/utils/sacpreset s0
 echo .
 echo installing recommended editors
 sleep .5
+cd /
 /ext-alpine-editors.sh
 echo .
 echo installing mate desktop environment
 sleep .5
 /ext-alpine-mate-desktop.sh
+chown -R user /home/user
+chown -R guest /home/guest
 echo .
 echo Congratulations. Installation complete!
 echo Now you can explore your brand new alpine-chroot environment
