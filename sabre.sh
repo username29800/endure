@@ -8,6 +8,9 @@
 #usage: [script path] [hostkey(private)]
 prefix=$(cat prefix)
 pprefix=$(cat pprefix)
+pathbase=$2
+#set pathbase to $(pwd) or $PWD in order to specify relative path
+#with empty pathbase, the absolute path provided by $1 will be used
 mkdir $pprefix/prefix.d
 mkdir $prefix
 mkdir $prefix/sidearmconnect
@@ -16,5 +19,5 @@ rm $prefix/sidearmconnect/sacsshhkey/key
 rm $prefix/sidearmconnect/sacsshpkey/key
 # this extension will be installed on user directory.
 mkdir $prefix/sidearmconnect/sacsshhkey $prefix/sidearmconnect/sacsshpkey $prefix/sidearmconnect/sacfwdkey $prefix/sidearmconnect/sacsshckey $prefix/sidearmconnect/rcvdest $prefix/.ssh
-ln -sf "$(pwd | sed s,/$,,)"/"$1" $prefix/sidearmconnect/sacsshhkey/key
-ln -sf "$(pwd | sed s,/$,,)"/"$1".pub $prefix/sidearmconnect/sacsshpkey/key
+ln -sf "$(echo $pathbase | sed s,/$,,)"/"$1" $prefix/sidearmconnect/sacsshhkey/key
+ln -sf "$(echo $pathbase | sed s,/$,,)"/"$1".pub $prefix/sidearmconnect/sacsshpkey/key
