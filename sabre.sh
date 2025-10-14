@@ -11,6 +11,7 @@ pprefix=$(cat pprefix)
 pathbase=$2
 #set pathbase to $(pwd) or $PWD in order to specify relative path
 #with empty pathbase, the absolute path provided by $1 will be used
+#to configure with absolute path, exclude preceding '/' (root directory representation) from the pathbase ($2) argument.
 mkdir $pprefix/prefix.d
 mkdir $prefix
 mkdir $prefix/sidearmconnect
