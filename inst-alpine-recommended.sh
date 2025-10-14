@@ -28,7 +28,7 @@ cd /home/user/sabre
 echo s0 > prefix
 echo /home/user > sprefix
 echo . > pprefix
-/sabre.sh ../.ssh/id_rsa
+/sabre.sh ../.ssh/id_rsa "$(pwd)"
 /utils/sacpreset s0
 echo .
 echo installing recommended editors
