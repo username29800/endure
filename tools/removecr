@@ -1,0 +1,7 @@
+#!/bin/sh
+#run:
+#sed -i 's/\\r//g removecr' to fix this script itself, then run in the endure root
+#recursively removes carriage return (^M or \r) from all files
+find . > files
+sed -i 's,.*\?,sed -i '\''s\,\\r\,\,g'\'' &', files
+sh files
