@@ -1,6 +1,6 @@
 #!/bin/sh
 #run:
-#sed -i 's/\\r$// removecr' to fix this script itself, then run in the endure root
+#sed -i 's/\r$// removecr' to fix this script itself, then run in the endure root
 #recursively removes carriage return (^M or \r) from all files
 find . > files
 sed -i 's,^\./\.git.*,,' files
