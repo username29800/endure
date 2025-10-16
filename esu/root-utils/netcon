@@ -4,3 +4,4 @@ ip link set "$1" up
 udhcpc -i "$1"
 echo "nameserver 9.9.9.11" > /etc/resolv.conf
 echo "nameserver 149.112.112.11" >> /etc/resolv.conf
+#usage: netcon [interface]

@@ -1,2 +1,0 @@
-#!/bin/sh
-torsocks -P 9021 zsh -l

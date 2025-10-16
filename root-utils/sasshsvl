@@ -1,4 +1,0 @@
-#!/bin/sh
-chmod 0600 /sacsshhkey/key
-chmod 0600 /sacsshpkey/key
-/usr/sbin/sshd -h /sacsshhkey/key -p "$1"
