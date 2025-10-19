@@ -5,4 +5,4 @@ port="$2"
 keyidx="$3"
 ruser=$4
 rprefix=$(cat rprefix)
-scp -O -P "$port" "$(readlink $prefix/sidearmconnect/sacsshpkey/key)" $ruser@"$remote":$rprefix/sidearmconnect/sacsshckey/key"$keyidx"
+scp -O -P "$port" "$prefix"/sidearmconnect/sacsshpkey/key $ruser@"$remote":$rprefix/sidearmconnect/sacsshckey/key"$keyidx"
