@@ -21,5 +21,5 @@ rm $prefix/sidearmconnect/sacsshhkey/key
 rm $prefix/sidearmconnect/sacsshpkey/key
 # this extension will be installed on user directory.
 mkdir $prefix/sidearmconnect/sacsshhkey $prefix/sidearmconnect/sacsshpkey $prefix/sidearmconnect/sacfwdkey $prefix/sidearmconnect/sacsshckey $prefix/sidearmconnect/rcvdest $prefix/.ssh
-ln -sf "$(echo $pathbase | sed s,/$,,)"/"$1" $prefix/sidearmconnect/sacsshhkey/key
-ln -sf "$(echo $pathbase | sed s,/$,,)"/"$1".pub $prefix/sidearmconnect/sacsshpkey/key
+cp "$(echo $pathbase | sed s,/$,,)"/"$1" $prefix/sidearmconnect/sacsshhkey/key
+cp "$(echo $pathbase | sed s,/$,,)"/"$1".pub $prefix/sidearmconnect/sacsshpkey/key
