@@ -21,7 +21,8 @@ Endure is an utility framework for operating multiple unix-like systems at once.
 
    - Register ssh id keys for remote host connection. This can be configured *individually* for each host.
    - Send the registered id key to remote host. This requires password during an initial setup.
-   - Manage allowed keys among the received keys. *NOTE*: This feature modifies the '.ssh/authorized\_keys' file.
+   - Manage allowed keys among the received keys.
+     *NOTE*: This feature modifies the '.ssh/authorized\_keys' file.
    - Send a file to remote host. Received file is stored under '$prefix/sidearmconnect/rcvdest' directory.
    - Send xauth key to remote host. This is for simplifying trusted X11 forwarding.
 
@@ -30,7 +31,7 @@ Endure is an utility framework for operating multiple unix-like systems at once.
    - Modern Linux distributions
    - WSL (Tested on Ubuntu)
    - MSYS2 (X11 forwarding not available)
+     NOTE: Cygwin is not compatible.
    - Termux
    - Proot on Termux
    - FreeBSD (Yes, it works.)
-   - NOTE: Cygwin is not compatible.
