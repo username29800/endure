@@ -3,7 +3,7 @@
 Endure is an utility framework for operating multiple unix-like systems at once.
 
 ## What is endure made for?
-|| TL;DR || Endure groups multiple linux/unix-like systems into one workflow.
+|| TL;DR || Endure integrates multiple linux/unix-like systems into one workflow.
 
 - 1. Endure provides a set of scripts for managing connections from/to remote system.
 - 2. Endure provides specific directory structure to store data for each remote.
@@ -31,6 +31,7 @@ Endure is an utility framework for operating multiple unix-like systems at once.
    - Modern Linux distributions
    - WSL (Tested on Ubuntu)
    - MSYS2 (X11 forwarding not available)
+
      NOTE: Cygwin is not compatible.
    - Termux
    - Proot on Termux
