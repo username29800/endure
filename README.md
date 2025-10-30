@@ -19,4 +19,18 @@ Endure is an utility framework for operating multiple unix-like systems at once.
 
    Sabre provides utility scripts to help:
 
-   - Register a ssh id key for remote host connection. This can be configured *individually* for each host.
+   - Register ssh id keys for remote host connection. This can be configured *individually* for each host.
+   - Send the registered id key to remote host. This requires password during an initial setup.
+   - Manage allowed keys among the received keys. *NOTE*: This feature modifies the '.ssh/authorized\_keys' file.
+   - Send a file to remote host. Received file is stored under '$prefix/sidearmconnect/rcvdest' directory.
+   - Send xauth key to remote host. This is for simplifying trusted X11 forwarding.
+
+   Sabre is compatible with:
+
+   - Modern Linux distributions
+   - WSL (Tested on Ubuntu)
+   - MSYS2 (X11 forwarding not available)
+   - Termux
+   - Proot on Termux
+   - FreeBSD (Yes, it works.)
+   - NOTE: Cygwin is not compatible.
