@@ -50,4 +50,21 @@ CT-Sabre provides functionalities of:
 
 3. Eux (Endure UX)
 
-This component provides scripts to set up a ready-to-use environment 
+This component provides scripts to set up a ready-to-use environment. This provides a shared UX to integrate workflow more easily.
+
+Eux includes:
+
+   - System-wide configuration for newly installed systems (superuser previlege required)
+     - Preconfigured xsession (Openbox or MATE)
+     - Workarounds/Utilities under /bin
+     - Automated password setup for specified user
+     - Automatically adds specified user to sudoers file
+   - User-specific configurations
+     - .profile configuration
+       - PulseAudio server set to localhost
+       - IBus set as the default IM by default
+     - Workarounds and Utilities under Home Directory
+     - Basic Home Directory Structure
+     - Minimal Vim configuration
+     - xstartup preconfigured for vnc session
+
