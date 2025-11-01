@@ -87,9 +87,31 @@ EAU includes scripts for:
   Arguments(2): \[absolute/relative path to ssh id key] \[path ref point: $PWD or (blank)\]
 - utils/ : The directory for Sabre utilities. \
   **IMPORTANT**: These utils relies on prefix files, and therefore called(executed) from the Sabre root directory, where prefix files reside.
+  - sacsshcon : SSH | Connect to a remote host. \
+    Arguments(3): \[ip/hostname\] \[port\] \[user\]
+  - sasshsvl / sacrunsshd : SSH | Launch sshd. Root previlege required. \
+    Argument(1): \[port\] \
+    **NOTE:** This is not likely to work in systemd-enabled environment.
+  - sacsendkey : SSH | Send a ssh id key to remote. \
+    Arguments(4): ip/hostname port key-name user
+  - sacsendf : SSH | Send a file to remote. \
+    Arguments(5): ip/hostname port filesource filename user
+  - sacauthkey / sacregkey : SSH | Authenticate received id key. \
+    Argument(1): key-name
+  - sacunregkey : SSH | Delete a key from authorized\_keys. \
+    Argument(1): key-name
+  - sacsendxkey : X11 | Send a xauth cookie to remote. \
+    Arguments(4): ip/hostname port line-number user
+  - sacauthxkey : X11 | Authenticate received xauth cookie.
+  - sacfixfwdhost : X11 | Fix Display variable in xauth cookie. \
+    Argument(1): display-location
+  - sacprefa : Local | Restore prefix preset from prefix.d . \
+    Argument(1): preset-name
+  - sacpreset : Local | Save current prefix as a preset. \
+    Argument(1): preset-name
 
 ### CT-Sabre
-- ct-sabre.sh : The setup script for CT-Sabre. This installs some scripts under $prefix/system/ .  You should still decompress rootfs manually. *No argument required.*
+- ct-sabre.sh : The setup script for CT-Sabre. This installs some scripts under '$prefix/system/' .  You should still decompress rootfs manually. *No argument required.*
 - tools/rewire-(old|rc|ng|n2) : Tools for rewriting link2symlink destinations after proot container migration. May take a long time. (Estimated 3min-5min for newly installed alpine linux containers) It is recommended to use ng (fileless) / n2 (faster) variant.
 - launch scripts : A set of scripts to launch container for various purposes
   - pinit / cinit : Basic launch scripts, respectively for proot and chroot. Should be run from the new root directory. \
