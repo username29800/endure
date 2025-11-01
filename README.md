@@ -133,3 +133,15 @@ EAU includes scripts for:
   Arguments(2): \[your home dir\] \[path to endure root\]
 
 ### Eau
+This would be explained in Getting Started section below.
+
+## Getting Started
+### Getting Endure
+To obtain the latest version of Endure, run: \
+git clone https://github.com/username29800/endure
+
+### Setting up Sabre
+Before using any feature, Sabre, the **core** of endure, should be set up. \
+Sabre requires two files to be installed properly: **prefix, pprefix**. You can literally use any method to write these files. For example, run: \
+echo test > prefix \
+echo preset > pprefix \
