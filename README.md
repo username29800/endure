@@ -47,6 +47,8 @@ CT-Sabre provides functionalities of:
 
    - Creating a root directory for a new chroot container, under the current Sabre prefix.
    - Setting up other components (eux, eau, sabre) for the newly created container
+   - Troubleshooting a proot container after migration (specific to proot)
+   - A large variety of chroot/proot init scripts for interactive/non-interactive operations
 
 3. Eux (Endure UX)
 
@@ -68,3 +70,12 @@ Eux includes:
      - Minimal Vim configuration
      - xstartup preconfigured for vnc session
 
+4. EAU (Endure Alpine Utilities)
+EAU provides scripts for setting up an alpine linux system. This component supports alpine linux on:
+   - Bare-metal
+   - Virtual machine
+   - Container (Docker, Podman, chroot, proot)
+EAU includes scripst for:
+   - Installing base system
+   - Installing recommended text editors (via apk and source)
+   - Installing and configuring virtualbox guest addition
