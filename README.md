@@ -32,11 +32,17 @@ Endure is an utility framework for operating multiple unix-like systems at once.
 
    - Modern Linux distributions
    - WSL (Tested on Ubuntu)
-   - MSYS2 (X11 forwarding not available) \
-     **NOTE:** Cygwin is **not** compatible.
+   - MSYS2 (X11 forwarding not available)
+   - Cygwin (X11 forwarding available) \
+     **NOTE:** Cygwin is **not** compatible with key-based ssh authentication. (Permission/ACL issues)
    - Termux
    - Proot on Termux
    - FreeBSD (Yes, it works.)
+
+   To enable X11 forwarding on Cygwin, add a display to xauth by running:
+   ```bash
+xauth add :0 MIT-MAGIC-COOKIE $(mcookie)
+   ```
 
 ### 2. CT-Sabre
 
@@ -157,6 +163,7 @@ First of all, go to the cloned repository.
 ```bash
 cd endure
 ```
+This implies that all the steps below should take place in endure root directory (~/endure by default).
 Sabre requires two files to be installed properly: **prefix, pprefix**. You can literally use any method to write these files. For example, run:
 ```bash
 echo test > prefix
@@ -173,6 +180,8 @@ Finally, Sabre can be installed. Run:
 ```
 When setting up a new connection, you can follow this steps again (with a different ssh key) to separate auth keys and data for each connection. \
 If you don't need to separate data storage, you can only change rprefix as written below.
+
+NOTE: A prefix is the name of a connection, sprefix is the path to the parent directory of .ssh, and pprefix is a path to the directory containing the prefix.d directory.
 
 ### Configuring a connection
 Sabre can configure connection to remote Sabre instance. This requires rprefix to specify remote Sabre prefix location. You can write this using any method. For example, run:
@@ -201,4 +210,24 @@ sh utils/sacauthkey [key name]
 From then, you can connect to remote Sabre instance without command. The sacsshcon utility makes this way easier:
 ```bash
 sh utils/sacsshcon [remote host] [port] [user]
+```
+
+### Saving current configuration as a preset
+To save these prefix files (prefix, sprefix, rprefix), run:
+```bash
+sh utils/sacpreset [preset name]
+```
+To restore that preset, run:
+```bash
+sh utils/sacprefa [preset name]
+```
+
+### Installing Eux
+Eux provides a shared User Experience among multiple systems you would connect using Sabre. To install Eux, run:
+```bash
+sh cfgnoroot.sh $HOME $PWD
+```
+To exclude any network usage, run:
+```bash
+sh cfgmini.sh $HOME $PWD
 ```
