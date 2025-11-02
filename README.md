@@ -142,6 +142,8 @@ git clone https://github.com/username29800/endure
 
 ### Setting up Sabre
 Before using any feature, Sabre, the **core** of endure, should be set up. \
-Sabre requires two files to be installed properly: **prefix, pprefix**. You can literally use any method to write these files. For example, run: \
-echo test > prefix \
-echo preset > pprefix \
+Sabre requires two files to be installed properly: **prefix, pprefix**. You can literally use any method to write these files. For example, run:
+```bash
+echo test > prefix
+echo preset > pprefix
+```
