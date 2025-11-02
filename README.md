@@ -136,14 +136,69 @@ EAU includes scripts for:
 This would be explained in Getting Started section below.
 
 ## Getting Started
-### Getting Endure
+### Prerequisites
+- Required
+  - openssh-server
+  - openssh-client
+  - basic shell : sh / bash
+  - git
+- Recommended
+  - vim
+  - zsh
+  - xserver
+
+### Obtaining Endure via git
 To obtain the latest version of Endure, run: \
 git clone https://github.com/username29800/endure
 
 ### Setting up Sabre
 Before using any feature, Sabre, the **core** of endure, should be set up. \
+First of all, go to the cloned repository.
+```bash
+cd endure
+```
 Sabre requires two files to be installed properly: **prefix, pprefix**. You can literally use any method to write these files. For example, run:
 ```bash
 echo test > prefix
 echo preset > pprefix
+```
+After creating prefix files, a ssh key should be created. Run:
+```bash
+mkdir ~/.ssh
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+```
+Finally, Sabre can be installed. Run:
+```bash
+./sabre.sh ../.ssh/id_rsa $PWD
+```
+When setting up a new connection, you can follow this steps again (with a different ssh key) to separate auth keys and data for each connection. \
+If you don't need to separate data storage, you can only change rprefix as written below.
+
+### Configuring a connection
+Sabre can configure connection to remote Sabre instance. This requires rprefix to specify remote Sabre prefix location. You can write this using any method. For example, run:
+```bash
+echo /home/user/endure/test > rprefix
+```
+To manage connections from remote, a sprefix file is needed. The file content is the parent directory of .ssh directory. For example, run:
+```bash
+# simple method
+echo .. > sprefix
+# more stable version
+echo /home/user > sprefix
+```
+Congratulations. Now you've all set up for making a connection to a remote Sabre instance.
+
+### Sending and registering an id key
+You can use a key-based authentication without password entry. Run:
+```bash
+sh utils/sacsendkey [remote host] [port] [key identifier (random name)] [user]
+```
+If you're connecting to the host for the first time, answer 'yes' to the prompt. Then, enter a password for the user you're connecting to. \
+On the server side, run:
+```bash
+sh utils/sacauthkey [key name]
+```
+From then, you can connect to remote Sabre instance without command. The sacsshcon utility makes this way easier:
+```bash
+sh utils/sacsshcon [remote host] [port] [user]
 ```
