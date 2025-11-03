@@ -236,4 +236,8 @@ To exclude any network usage, run:
 ```bash
 sh cfgmini.sh $HOME $PWD
 ```
+TIP: To integrate shells other than zsh and sh, copy the content of .zshrc.1 into your shell configuration file. For example:
+```bash
+cp ~/.zshrc.1 ~/.bashrc
+```
 NOTE: Eux now provides the Endure Path Extension feature. You can run Sabre/CT-Sabre utilities from anywhere. (Calling these scripts still requires prefix files)
