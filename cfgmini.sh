@@ -19,15 +19,19 @@ echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
 echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
 echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
 echo 'export PULSE_SERVER=localhost' >> .zshrc.1
+echo 'export PATH=$PATH:'"$(cd $dest/utils && pwd):$(cd $dest/init && pwd)" >> .zshrc.1
 mv $dest/.profile $dest/.profile.eux.b
-echo 'export GTK_IM_MODULE=ibus' > .profile
-echo 'export QT_IM_MODULE=ibus' >> .profile
-echo 'export XMODIFIERS=@im=ibus' >> .profile
-echo 'export PULSE_SERVER=localhost' >> .profile
+#echo 'export GTK_IM_MODULE=ibus' > .profile
+#echo 'export QT_IM_MODULE=ibus' >> .profile
+#echo 'export XMODIFIERS=@im=ibus' >> .profile
+#echo 'export PULSE_SERVER=localhost' >> .profile
+#echo 'export PATH=$PATH:'"$(cd $dest/utils && pwd):$(cd $dest/init && pwd)" >> .profile
 cp .zshrc.1 .config/tigervnc/xstartup
+cp .zshrc.1 .profile
 echo 'xrandr --output VNC-0 --mode 1920x1080' >> .config/tigervnc/xstartup
 echo 'openbox' >> .config/tigervnc/xstartup
 ln -sf .config/tigervnc/xstartup
+ln -sf .config/tigervnc/xstartup .xinitrc
 echo '#!/bin/sh' > $dest/eux-utils/safefox
 echo 'export MOZ_FAKE_NO_SANDBOX=1' >> $dest/eux-utils/safefox
 echo 'firefox $1' >> $dest/eux-utils/safefox
@@ -38,9 +42,6 @@ chmod 755 $dest/eux-utils/showw
 echo '#!/bin/sh' > $dest/eux-utils/sdclock
 echo 'xclock -digital -update 10 &' >> $dest/eux-utils/sdclock
 chmod 755 $dest/eux-utils/sdclock
-cp $src/utils/tlch $dest/eux-utils/tlch
-cp $src/utils/tlch $dest/eux-utils/twrapper
-cp $src/utils/tlch $dest/eux-utils/tlaunch
 chmod 744 .config/tigervnc/xstartup
 mkdir .vnc
 cp xstartup .vnc/xstartup

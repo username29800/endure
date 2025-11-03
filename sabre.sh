@@ -23,3 +23,8 @@ rm $prefix/sidearmconnect/sacsshpkey/key
 mkdir $prefix/sidearmconnect/sacsshhkey $prefix/sidearmconnect/sacsshpkey $prefix/sidearmconnect/sacfwdkey $prefix/sidearmconnect/sacsshckey $prefix/sidearmconnect/rcvdest $prefix/.ssh
 cp "$(echo $pathbase | sed s,/$,,)"/"$1" $prefix/sidearmconnect/sacsshhkey/key
 cp "$(echo $pathbase | sed s,/$,,)"/"$1".pub $prefix/sidearmconnect/sacsshpkey/key
+echo . > $prefix/prefix
+echo $(cd $sprefix && pwd) > $prefix/sprefix
+echo $(cd $pprefix && pwd) > $prefix/pprefix
+cp rprefix $prefix/rprefix
+cp cprefix $prefix/cprefix

@@ -1,0 +1,4 @@
+#\!/bin/sh
+mkdir mem rmem sproc
+unset LD_PRELOAD
+proot -b /dev -b mem:/dev/shm -b rmem:/run/shm -b /proc -b enconf/fver:/proc/version -b /sys -r . -0 -l --sysvipc /bin/su -l $1
