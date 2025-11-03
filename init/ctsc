@@ -2,4 +2,4 @@
 prefix=$(cat prefix | sed 's,/$,,')
 cprefix=$(cat cprefix | sed 's,/$,,')
 cd $prefix/system
-./cinitc "$1" "cd $cprefix && $2"
+cinitc "$1" "cd $cprefix && $2"

@@ -1,4 +1,4 @@
 #!/bin/sh
 prefix=$(cat prefix | sed 's,/$,,')
 cd $prefix/system
-./cinitc "$1" "$2"
+cinitc "$1" "$2"
