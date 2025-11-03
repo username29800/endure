@@ -176,7 +176,7 @@ ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 ```
 Finally, Sabre can be installed. Run:
 ```bash
-./sabre.sh ../.ssh/id_rsa $PWD
+sh utils/sabre.sh ../.ssh/id_rsa $PWD
 ```
 When setting up a new connection, you can follow this steps again (with a different ssh key) to separate auth keys and data for each connection. \
 If you don't need to separate data storage, you can only change rprefix as written below.
@@ -222,6 +222,11 @@ To restore that preset, run:
 sh utils/sacprefa [preset name]
 ```
 
+#### Alternative: The Parallel Preset System
+Sabre newly supports an alternative to the traditional preset system. When configuring a Sabre instance (using ./sabre.sh), current prefix files are copied to the prefix directory, with path adjustment. \
+You can now just chdir to a prefix directory, and call Sabre/CT-Sabre utilities. It is highly recommended to install Eux when using this method. \
+This new system makes it easier to connect to multiple remotes at once, without switching presets.
+
 ### Installing Eux
 Eux provides a shared User Experience among multiple systems you would connect using Sabre. To install Eux, run:
 ```bash
@@ -231,3 +236,4 @@ To exclude any network usage, run:
 ```bash
 sh cfgmini.sh $HOME $PWD
 ```
+NOTE: Eux now provides the Endure Path Extension feature. You can run Sabre/CT-Sabre utilities from anywhere. (Calling these scripts still requires prefix files)
