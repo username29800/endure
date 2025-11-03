@@ -19,7 +19,7 @@ echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
 echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
 echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
 echo 'export PULSE_SERVER=localhost' >> .zshrc.1
-echo 'export PATH=$PATH:'"$(cd $dest/utils && pwd):$(cd $dest/init && pwd)" >> .zshrc.1
+echo 'export PATH=$PATH:'"$(cd $src/utils && pwd):$(cd $src/init && pwd)" >> .zshrc.1
 mv $dest/.profile $dest/.profile.eux.b
 #echo 'export GTK_IM_MODULE=ibus' > .profile
 #echo 'export QT_IM_MODULE=ibus' >> .profile
