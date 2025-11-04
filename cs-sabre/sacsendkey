@@ -1,0 +1,8 @@
+#!/bin/sh
+prefix=$(cat prefix)
+remote="$1"
+port="$2"
+keyidx="$3"
+ruser=$4
+rprefix=$(cat rprefix)
+scp -O -P "$port" "$prefix"/sidearmconnect/sacsshpkey/key $ruser@"$remote":$rprefix/sidearmconnect/sacsshckey/key"$keyidx"
