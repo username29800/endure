@@ -45,7 +45,7 @@ xauth add :0 MIT-MAGIC-COOKIE $(mcookie)
    ```
 #### 1-1. CS-Sabre
 
-CS-Sabre is the advanced, automation-focused version of sabre. This component makes use of a configuration file. This file is called 'database' as it contains connection info.
+CS-Sabre(Cluster-Sabre) is the advanced, automation-focused version of Sabre. This component makes use of a configuration file. This file is called 'database' as it contains connection info.
 
 CS-Sabre features:
 - Connection management in one database file, instead of prefix.d
@@ -61,6 +61,13 @@ pk_alias [pubkey]
 #sample entry
 default getting-started /home/user/endure/getting-started localhost 22 user
 pk_default [pubkey]
+
+#sample client-only entry: alias, prefix, pubkey only
+client client
+pk_client [pubkey]
+
+#sample server-only entry: no pubkey
+default getting-started /home/user/endure/getting-started localhost 22 user
 ```
 CS-Sabre utilities require two common arguments: \[database file\] and \[entry name\].
 
@@ -217,6 +224,67 @@ echo .. > sprefix
 echo /home/user > sprefix
 ```
 Congratulations. Now you've all set up for making a connection to a remote Sabre instance.
+
+#### Alternative: Setting up CS-Sabre
+CS-Sabre provides more convenience with the power of its database format. To configure CS-Sabre, you need to configure pprefix and sprefix, with an additional database file. \
+Fortuately, you have a database example for testing:
+```
+#sample client+server entry
+test test /home/user/endure/test localhost 22 user
+```
+You can save this as a file 'db.test', or write a custom entry from scratch. Note that this entry wouldn't work if you don't adjust some values(e.g. username). \
+To configure CS-Sabre with this entry, run:
+```bash
+#syntax: [csprofile] [database] [alias]
+sh cs-sabre/csprofile db.test test
+```
+The configured preset is compatible with the Parallel Preset System in Sabre.
+
+#### Sending and registering an id key using CS-Sabre
+CS-Sabre enables the ability to share and store multiple public keys in a single database file. Thus, you can now share a database file with nodes(remotes) to build an interconnected workflow network. \
+You can attach a public key to an entry with:
+```bash
+sh cs-sabre/csakey [database] [alias] [pubkey file]
+```
+Then send this file to remote:
+```bash
+sh cs-sabre/cssend [database] [remote alias] [database file] [remote filename]
+```
+And then accept the key:
+```bash
+sh cs-sabre/cspkey [database] [client alias]
+```
+
+#### All CS-Sabre operations
+```
+#connect to remote
+cscon [database] [remote alias]
+
+#ssh tunneling
+csfwd [database] [remote alias] [portforwarding rule]
+
+#send file
+cssend [database] [remote alias] [source] [received file name]
+
+#attach key
+csakey [database] [client alias] [pubkey]
+
+#accept key
+cspkey [database] [client alias]
+
+#deauthorize key
+csdkey [database] [client alias]
+
+#run sshd
+csserver [database] [self alias]
+#NOTE: In distros that use systemd, use systemctl instead.
+
+#edit display name in MIT-MAGIC-COOKIE
+csxdpy [database] [self alias] [display]
+
+#accept x11 fwd key
+csxkey [database] [self alias]
+```
 
 ### Sending and registering an id key
 You can use a key-based authentication without password entry. Run:
