@@ -183,7 +183,9 @@ This would be explained in Getting Started section below.
 
 ### Obtaining Endure via git
 To obtain the latest version of Endure, run: \
+```bash
 git clone https://github.com/username29800/endure
+```
 
 ### Setting up Sabre
 Before using any feature, Sabre, the **core** of endure, should be set up. \
