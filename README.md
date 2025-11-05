@@ -263,6 +263,9 @@ cscon [database] [remote alias]
 #ssh tunneling
 csfwd [database] [remote alias] [portforwarding rule]
 
+#run command
+cscmd [database] [remote alias] [command]
+
 #send file
 cssend [database] [remote alias] [source] [received file name]
 
