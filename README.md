@@ -182,7 +182,7 @@ This would be explained in Getting Started section below.
   - xserver
 
 ### Obtaining Endure via git
-To obtain the latest version of Endure, run: \
+To obtain the latest version of Endure, run:
 ```bash
 git clone https://github.com/username29800/endure
 ```
