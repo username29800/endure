@@ -43,6 +43,27 @@ Endure is an utility framework for operating multiple unix-like systems at once.
    ```bash
 xauth add :0 MIT-MAGIC-COOKIE $(mcookie)
    ```
+#### 1-1. CS-Sabre
+
+CS-Sabre is the advanced, automation-focused version of sabre. This component makes use of a configuration file. This file is called 'database' as it contains connection info.
+
+CS-Sabre features:
+- Connection management in one database file, instead of prefix.d
+- Database files can be shared
+- Prefix directories can be built from database entries
+- Ability to build a mutually connected network using a shared database file
+
+A database entry looks like this:
+```
+[alias] [prefix] [rprefix] [hostname] [port] [user]
+pk_alias [pubkey]
+
+#sample entry
+default getting-started /home/user/endure/getting-started localhost 22 user
+pk_default [pubkey]
+```
+CS-Sabre utilities require two common arguments: \[database file\] and \[entry name\].
+
 
 ### 2. CT-Sabre
 
