@@ -235,8 +235,8 @@ test test /home/user/endure/test localhost 22 user
 You can save this as a file 'db.test', or write a custom entry from scratch. Note that this entry wouldn't work if you don't adjust some values(e.g. username). \
 To configure CS-Sabre with this entry, run:
 ```bash
-#syntax: [csprofile] [database] [alias]
-sh cs-sabre/csprofile db.test test
+#syntax: [csprofile] [database] [alias] [id key] [pathbase]
+sh cs-sabre/csprofile db.test test ~/.ssh/id_rsa $PWD
 ```
 The configured preset is compatible with the Parallel Preset System in Sabre.
 
@@ -277,7 +277,7 @@ csdkey [database] [client alias]
 
 #run sshd
 csserver [database] [self alias]
-#NOTE: In distros that use systemd, use systemctl instead.
+#NOTE: In distros that use systemd, use systemctl instead. You don't need to configure a server prefix in this case.
 
 #edit display name in MIT-MAGIC-COOKIE
 csxdpy [database] [self alias] [display]
