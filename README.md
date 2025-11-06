@@ -63,10 +63,15 @@ default getting-started /home/user/endure/getting-started localhost 22 user
 pk_default [pubkey]
 
 #sample client-only entry: alias, prefix, pubkey only
+#This sample is for transferring client information to server side.
 client client
 pk_client [pubkey]
 
-#sample server-only entry: no pubkey
+#sample server-side entry
+#This entry is for configuring a server-side instance.
+server server
+
+#sample remote entry: no pubkey
 default getting-started /home/user/endure/getting-started localhost 22 user
 ```
 CS-Sabre utilities require two common arguments: \[database file\] and \[entry name\].
