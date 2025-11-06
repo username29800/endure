@@ -58,7 +58,7 @@ A database entry looks like this:
 [alias] [prefix] [rprefix] [hostname] [port] [user]
 pk_alias [pubkey]
 
-#sample entry
+#sample node entry - recommended
 default getting-started /home/user/endure/getting-started localhost 22 user
 pk_default [pubkey]
 
@@ -69,7 +69,7 @@ pk_client [pubkey]
 
 #sample server-side entry
 #This entry is for configuring a server-side instance.
-server server
+server server 0 0 22
 
 #sample remote entry: no pubkey
 default getting-started /home/user/endure/getting-started localhost 22 user
