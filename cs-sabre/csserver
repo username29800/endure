@@ -23,4 +23,4 @@ echo user=$(echo $entry | cut -d' ' -f6)
 echo pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
 chmod 0600 $prefix/sidearmconnect/sacsshhkey/key
 chmod 0600 $prefix/sidearmconnect/sacsshpkey/key
-/usr/sbin/sshd -h $prefix/sidearmconnect/sacsshhkey/key -p "$1"
+/usr/sbin/sshd -h $prefix/sidearmconnect/sacsshhkey/key -p "$port"
