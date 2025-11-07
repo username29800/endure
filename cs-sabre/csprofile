@@ -10,19 +10,15 @@ entryname=$2
 entry=$(echo "$csdb" | grep '^'$entryname' ')
 prefix=$(echo $entry | cut -d' ' -f2)
 rprefix=$(echo $entry | cut -d' ' -f3)
-sprefix=$(echo "$csdb" | grep '^cfg_sprefix ' | cut -d' ' -f2-)
 hostname=$(echo $entry | cut -d' ' -f4)
 port=$(echo $entry | cut -d' ' -f5)
-lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2-)
 user=$(echo $entry | cut -d' ' -f6)
 pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
 echo entry=$(echo "$csdb" | grep '^'$entryname' ')
 echo prefix=$(echo $entry | cut -d' ' -f2)
 echo rprefix=$(echo $entry | cut -d' ' -f3)
-echo sprefix=$(echo "$csdb" | grep '^cfg_sprefix ' | cut -d' ' -f2-)
 echo hostname=$(echo $entry | cut -d' ' -f4)
 echo port=$(echo $entry | cut -d' ' -f5)
-echo lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2-)
 echo user=$(echo $entry | cut -d' ' -f6)
 echo pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
 #sabre: Sidearmconnect-Box Restricted Environment
@@ -32,11 +28,14 @@ echo pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
 #NOTE: every prefix should not contain trailing slash(es); They may cause errors. To filter out the slashes automatically, pipe stdout into "sed 's,/$,,'"
 #example: echo . > prefix ; echo /home/user-example > sprefix ; echo /home/user-remote/endure > rprefix
 #usage: [script path] [hostkey(private)]
-
+sprefix=$(cat sprefix)
+pprefix=$(cat pprefix)
 pathbase=$4
 #set pathbase to $(pwd) or $PWD in order to specify relative path
 #with empty pathbase, the absolute path provided by $1 will be used
 #to configure with absolute path, exclude preceding '/' (root directory representation) from the pathbase ($2) argument.
+mkdir $pprefix
+mkdir $pprefix/prefix.d
 mkdir $prefix
 mkdir $prefix/sidearmconnect
 chmod -R 755 $prefix/sidearmconnect
@@ -48,5 +47,6 @@ cp "$(echo $pathbase | sed s,/$,,)"/"$3" $prefix/sidearmconnect/sacsshhkey/key
 cp "$(echo $pathbase | sed s,/$,,)"/"$3".pub $prefix/sidearmconnect/sacsshpkey/key
 echo . > $prefix/prefix
 echo $(cd $sprefix && pwd) > $prefix/sprefix
+echo $(cd $pprefix && pwd) > $prefix/pprefix
 echo $rprefix > $prefix/rprefix
 cp cprefix $prefix/cprefix
