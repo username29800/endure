@@ -1,0 +1,12 @@
+cat header0 src/csakey >> build/csakey
+cat header0 src/cscmd >> build/cscmd
+cat header0 src/cscon >> build/cscon
+cat header0 src/csdkey >> build/csdkey
+cat header0 src/csfwd >> build/csfwd
+cat header0 src/cspkey >> build/cspkey
+cat header0 src/csprofile >> build/csprofile
+cat header0 src/cssend >> build/cssend
+cat header0 src/cssendx >> build/cssendx
+cat header0 src/csserver >> build/csserver
+cat header0 src/csxdpy >> build/csxdpy
+cat header0 src/csxkey >> build/csxkey

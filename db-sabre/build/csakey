@@ -1,0 +1,24 @@
+#!/bin/sh
+csdb=$(cat $1 | cat | grep . | cat | cut -d' ' -f1-)
+entryname=$(echo $2 | cat | grep . | cat | cut -d' ' -f1-)
+entry=$(echo "$csdb" | cat | grep ^$entryname\  | cat | cut -d' ' -f1-)
+prefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f2)
+rprefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f3)
+hostname=$(echo $entry | cat | grep . | cat | cut -d' ' -f4)
+port=$(echo $entry | cat | grep . | cat | cut -d' ' -f5)
+user=$(echo $entry | cat | grep . | cat | cut -d' ' -f6)
+pkey=$(echo "$csdb" | cat | grep ^pk_$entryname\  | cat | cut -d' ' -f1-)
+echo csdb=$(cat $1 | cat | grep . | cat | cut -d' ' -f1-)
+echo entryname=$(echo $2 | cat | grep . | cat | cut -d' ' -f1-)
+echo entry=$(echo "$csdb" | cat | grep ^$entryname\  | cat | cut -d' ' -f1-)
+echo prefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f2)
+echo rprefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f3)
+echo hostname=$(echo $entry | cat | grep . | cat | cut -d' ' -f4)
+echo port=$(echo $entry | cat | grep . | cat | cut -d' ' -f5)
+echo user=$(echo $entry | cat | grep . | cat | cut -d' ' -f6)
+echo pkey=$(echo "$csdb" | cat | grep ^pk_$entryname\  | cat | cut -d' ' -f1-)
+#!/bin/sh
+#format: pk_alias pubkey
+#akey=$(cat $3 | sed 's,^,pk_'$entryname' ,')
+#line=$(echo "$csdb" | grep -n '^'$entryname' ' | cut -d: -f1)
+sed -i $entryline'a'"$pkeyformat $keystring" $dbfile

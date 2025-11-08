@@ -1,26 +1,23 @@
 #!/bin/sh
-#common header for cs-sabre scripts
-#format: alias prefix rprefix hostname port user
-#format: pk_alias pubkey
-#cs-sabre configuration database
-csdb=$(cat $1)
-#alias
-entryname=$2
-#entry
-entry=$(echo "$csdb" | grep '^'$entryname' ')
-prefix=$(echo $entry | cut -d' ' -f2)
-rprefix=$(echo $entry | cut -d' ' -f3)
-hostname=$(echo $entry | cut -d' ' -f4)
-port=$(echo $entry | cut -d' ' -f5)
-user=$(echo $entry | cut -d' ' -f6)
-pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
-echo entry=$(echo "$csdb" | grep '^'$entryname' ')
-echo prefix=$(echo $entry | cut -d' ' -f2)
-echo rprefix=$(echo $entry | cut -d' ' -f3)
-echo hostname=$(echo $entry | cut -d' ' -f4)
-echo port=$(echo $entry | cut -d' ' -f5)
-echo user=$(echo $entry | cut -d' ' -f6)
-echo pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
+csdb=$(cat $1 | cat | grep . | cat | cut -d' ' -f1-)
+entryname=$(echo $2 | cat | grep . | cat | cut -d' ' -f1-)
+entry=$(echo "$csdb" | cat | grep ^$entryname\  | cat | cut -d' ' -f1-)
+prefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f2)
+rprefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f3)
+hostname=$(echo $entry | cat | grep . | cat | cut -d' ' -f4)
+port=$(echo $entry | cat | grep . | cat | cut -d' ' -f5)
+user=$(echo $entry | cat | grep . | cat | cut -d' ' -f6)
+pkey=$(echo "$csdb" | cat | grep ^pk_$entryname\  | cat | cut -d' ' -f1-)
+echo csdb=$(cat $1 | cat | grep . | cat | cut -d' ' -f1-)
+echo entryname=$(echo $2 | cat | grep . | cat | cut -d' ' -f1-)
+echo entry=$(echo "$csdb" | cat | grep ^$entryname\  | cat | cut -d' ' -f1-)
+echo prefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f2)
+echo rprefix=$(echo $entry | cat | grep . | cat | cut -d' ' -f3)
+echo hostname=$(echo $entry | cat | grep . | cat | cut -d' ' -f4)
+echo port=$(echo $entry | cat | grep . | cat | cut -d' ' -f5)
+echo user=$(echo $entry | cat | grep . | cat | cut -d' ' -f6)
+echo pkey=$(echo "$csdb" | cat | grep ^pk_$entryname\  | cat | cut -d' ' -f1-)
+#!/bin/sh
 #sabre: Sidearmconnect-Box Restricted Environment
 #Sabre is a non-root, improved implementation of sidearmconnect.
 #howto: (1) create prefix specification file(echo . > prefix) (2) create rprefix(remote prefix) to connect to remote, or create sprefix(sys-prefix) to automate ssh key registration
@@ -28,9 +25,9 @@ echo pkey=$(echo "$csdb" | grep '^pk_'$entryname' ' | cut -d' ' -f2-)
 #NOTE: every prefix should not contain trailing slash(es); They may cause errors. To filter out the slashes automatically, pipe stdout into "sed 's,/$,,'"
 #example: echo . > prefix ; echo /home/user-example > sprefix ; echo /home/user-remote/endure > rprefix
 #usage: [script path] [hostkey(private)]
-sprefix=$(cat sprefix)
-pprefix=$(cat pprefix)
-pathbase=$4
+#sprefix=$(cat sprefix)
+#pprefix=$(cat pprefix)
+#pathbase=$4
 #set pathbase to $(pwd) or $PWD in order to specify relative path
 #with empty pathbase, the absolute path provided by $1 will be used
 #to configure with absolute path, exclude preceding '/' (root directory representation) from the pathbase ($2) argument.
@@ -43,8 +40,8 @@ rm $prefix/sidearmconnect/sacsshhkey/key
 rm $prefix/sidearmconnect/sacsshpkey/key
 # this extension will be installed on user directory.
 mkdir $prefix/sidearmconnect/sacsshhkey $prefix/sidearmconnect/sacsshpkey $prefix/sidearmconnect/sacfwdkey $prefix/sidearmconnect/sacsshckey $prefix/sidearmconnect/rcvdest $prefix/.ssh
-cp "$(echo $pathbase | sed s,/$,,)"/"$3" $prefix/sidearmconnect/sacsshhkey/key
-cp "$(echo $pathbase | sed s,/$,,)"/"$3".pub $prefix/sidearmconnect/sacsshpkey/key
+cp "$(echo $pathbase | sed s,/$,,)"/"$keyfile" $prefix/sidearmconnect/sacsshhkey/key
+cp "$(echo $pathbase | sed s,/$,,)"/"$keyfile".pub $prefix/sidearmconnect/sacsshpkey/key
 echo . > $prefix/prefix
 echo $(cd $sprefix && pwd) > $prefix/sprefix
 echo $(cd $pprefix && pwd) > $prefix/pprefix

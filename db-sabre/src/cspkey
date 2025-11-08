@@ -1,0 +1,7 @@
+#!/bin/sh
+#sprefix=$(cat sprefix)
+echo '' >> $sprefix/.ssh/authorized_keys
+echo "$pkey" >> $sprefix/.ssh/authorized_keys
+echo '' >> $sprefix/.ssh/authorized_keys
+chmod 0700 $sprefix/.ssh
+chmod 0600 $sprefix/.ssh/authorized_keys
