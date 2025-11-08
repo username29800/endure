@@ -1,0 +1,9 @@
+csdb cat '$1' cat . cat 1-
+entryname echo '$2' cat . cat 1-
+entry echo '"$csdb"' cat '^$entryname\ ' cat 1-
+prefix echo '$entry' cat . cat 2
+rprefix echo '$entry' cat . cat 3
+hostname echo '$entry' cat . cat 4
+port echo '$entry' cat . cat 5
+user echo '$entry' cat . cat 6
+pkey echo '"$csdb"' cat '^pk_$entryname\ ' cat 1-
