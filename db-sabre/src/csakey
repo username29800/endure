@@ -2,4 +2,4 @@
 #format: pk_alias pubkey
 #akey=$(cat $3 | sed 's,^,pk_'$entryname' ,')
 #line=$(echo "$csdb" | grep -n '^'$entryname' ' | cut -d: -f1)
-sed -i $entryline'a'"$pkeyformat $keystring" $dbfile
+sed -i $entryline'a'"${pkeyformat}${entryname} $keystring" $dbfile
