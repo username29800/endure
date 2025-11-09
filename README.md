@@ -100,10 +100,12 @@ sprefix echo '"$csdb"' cat '^cfg_sprefix' cat 2-
 - preprocessor: processor command before line filtering
 - filter: line/entry filter. Use '.' to disable filtering.
 - postprocessor: processor command after line filtering
-- position: value index in an entry. This is an argument to:
-  ```bash
+- position: value index in an entry. This is an argument passed to cut.
+
+The position argument is processed using:
+   ```bash
 cut -d' ' -f$position
-  ```
+   ```
 
 To Build a custom cs-sabre toolset, run:
 ```bash
