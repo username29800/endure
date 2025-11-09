@@ -76,6 +76,40 @@ default getting-started /home/user/endure/getting-started localhost 22 user
 ```
 CS-Sabre utilities require two common arguments: \[database file\] and \[entry name\].
 
+#### 1-2. DB-Sabre
+DB-Sabre(Dynamically Built Sabre) is a toolkit for building a customized Sabre based on CT-Sabre codebase. This utility enables users to build their own header for headerless cs-sabre utilities. The header includes:
+- Database parser logic
+- Variable definitions
+
+The mkheader utility reads a header specification file to build a header. Then csbuild attaches the header to headerless cs-sabre scripts in src/, and the scripts are saved in build/.
+
+Below is the format specification syntax:
+```
+variable source_cmd source_arg preprocessor filter postprocessor position
+
+#sample format entry
+#any tokens that can be interpreted by shell, must be escaped.
+#Example: "$var" => '"$var"', 'test' => \'test\', '$var' => \''$var'\', '[0-9]' => \''[0-9]'\'
+csdb cat '$1' cat . cat 1-
+hostname echo '$entry' cat . cat 4
+sprefix echo '"$csdb"' cat '^cfg_sprefix' cat 2-
+```
+- variable: the name of variable
+- source\_cmd: a command to retrieve the source of a variable. Typically cat or echo.
+- source\_arg: the source of a variable. This can be either a file or other variable.
+- preprocessor: processor command before line filtering
+- filter: line/entry filter. Use '.' to disable filtering.
+- postprocessor: processor command after line filtering
+- position: value index in an entry. This is an argument to:
+  ```bash
+cut -d' ' -f$position
+  ```
+
+To Build a custom cs-sabre toolset, run:
+```bash
+sh mkheader [format specification] [header]
+sh csbuild [header]
+```
 
 ### 2. CT-Sabre
 
