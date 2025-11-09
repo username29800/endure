@@ -8,7 +8,7 @@ rprefix echo '$entry' cat . cat 3
 hostname echo '$entry' cat . cat 4
 port echo '$entry' cat . cat 5
 user echo '$entry' cat . cat 6
-pkey echo '"$csdb"' cat '^pk_$entryname\ ' cat 1-
+pkey echo '"$csdb"' cat '^"$pkeyformat"$entryname\ ' cat 2-
 cscmd echo '"$3"' cat . cat 1-
 fwdrule echo '$3' cat . cat 1-
 keyfile echo '$3' cat . cat 1-
@@ -17,7 +17,7 @@ fsource echo '$3' cat . cat 1-
 fdest echo '$4' cat . cat 1-
 xline echo '$3' cat . cat 1-
 dpyname echo '$3' cat . cat 1-
-lport echo '$3' cat . cat 1-
+lport echo '"$csdb"' cat '^listen_$entryname\ ' cat 1-
 entryline echo '"$csdb"' 'grep -n .' \''^[0-9]*:'\''$entryname\ ' 'cut -d: -f1' 1-
 pkeyformat echo '"$csdb"' cat '^cfg_pkeyformat\ ' cat 2-
 keystring cat '$3' cat . cat 1-

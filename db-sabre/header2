@@ -23,5 +23,3 @@ entryline=$(echo "$csdb" | grep -n . | grep '^[0-9]*:'$entryname\  | cut -d: -f1
 pkeyformat=$(echo "$csdb" | cat | grep ^cfg_pkeyformat\  | cat | cut -d' ' -f2-)
 keystring=$(cat $3 | cat | grep . | cat | cut -d' ' -f1-)
 dbfile=$(echo $1 | cat | grep . | cat | cut -d' ' -f1-)
-#!/bin/sh
-xauth add $(cat $prefix/sidearmconnect/rcvdest/xauthkey)
