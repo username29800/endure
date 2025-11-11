@@ -1,0 +1,2 @@
+echo csdb = \$\(cat \$1\) >> $1
+echo entry = \$\(cat ${dq}\$csdb$dq\) >> $1

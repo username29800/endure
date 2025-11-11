@@ -1,0 +1,2 @@
+csdb cat \$1
+entry cat ${dq}\$csdb$dq
