@@ -1,2 +1,3 @@
 csdb cat \$1
-entry cat ${dq}\$csdb$dq
+entry echo ${dq}\$csdb$dq
+qemu sudo $q86 $q86dev

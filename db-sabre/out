@@ -1,2 +1,5 @@
-csdb = $(cat $1)
-entry = $(cat "$csdb")
+
+csdb=$(cat $1)
+entry=$(echo "$csdb")
+qemu=$(sudo qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci)
+echo $entry

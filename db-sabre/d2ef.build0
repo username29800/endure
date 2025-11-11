@@ -1,2 +1,3 @@
-echo csdb = \$\(cat \$1\) >> $1
-echo entry = \$\(cat ${dq}\$csdb$dq\) >> $1
+echo csdb=\$\(cat \$1\) >> $1
+echo entry=\$\(echo ${dq}\$csdb$dq\) >> $1
+echo qemu=\$\(sudo $q86 $q86dev\) >> $1
