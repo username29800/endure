@@ -2,8 +2,8 @@ csdb cat \$1
 entryname echo \$2
 entry echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$entryname'$sq $sq $pchar $ln
 prefix echo \$entry $pchar ${pos}2 $pchar $ln
-sprefix echo \$entry $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
-pprefix echo \$entry $pchar grep ${sq}'^cfg_pprefix '$sq $pchar ${pos}2- $pchar $ln
+sprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
+pprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pprefix '$sq $pchar ${pos}2- $pchar $ln
 rprefix echo \$entry $pchar ${pos}3
 hostname echo \$entry $pchar ${pos}4
 port echo \$entry $pchar ${pos}5
