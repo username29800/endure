@@ -8,7 +8,7 @@ rprefix echo \$entry $pchar ${pos}3
 hostname echo \$entry $pchar ${pos}4
 port echo \$entry $pchar ${pos}5
 user echo \$entry $pchar ${pos}6
-pkey echo $dq\$csdb$dq $pchar grep ${sq}'^$pkeyformat$entryname '$sq $pchar ${pos}2- $pchar $ln
+pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
 cscmd echo $dq\$3$dq
 fwdrule echo \$3
 keyfile echo \$3
