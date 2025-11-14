@@ -12,3 +12,6 @@ cat d2efheader d2ef.build0 > d2ef.builder
 cat d2ef.builder
 echo "" > $out
 sh d2ef.builder $out
+sed -i 1d $out
+#rm d2ef.build0
+#rm d2ef.builder

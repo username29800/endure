@@ -17,7 +17,7 @@ fsource echo '$3' cat . cat 1-
 fdest echo '$4' cat . cat 1-
 xline echo '$3' cat . cat 1-
 dpyname echo '$3' cat . cat 1-
-lport echo '"$csdb"' cat '^listen_$entryname\ ' cat 1-
+lport echo '"$csdb"' cat '^listen_$entryname\ ' cat 2-
 entryline echo '"$csdb"' 'grep -n .' \''^[0-9]*:'\''$entryname\ ' 'cut -d: -f1' 1-
 pkeyformat echo '"$csdb"' cat '^cfg_pkeyformat\ ' cat 2-
 keystring cat '$3' cat . cat 1-

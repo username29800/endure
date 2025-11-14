@@ -1,11 +1,13 @@
 #!/bin/sh
-#csparse: a line parser for db-sabre
+#This header file defines the variables interpreted by d2efbuild.
+#Each variable can be called in a header definition file, to make it easier to define a variable.
 sq=\'
 dq=\"
 pchar=\|
 redir=\>
+bksh=\\
 apnd='>>'
-pos0='cut -d\  -f'
+pos='cut -d'${sq}' '${sq}' -f'
 linum='grep -n '$sq'.\?'$sq
 ln='head -n1'
 tr='tr -d \n'
