@@ -1,0 +1,12 @@
+cat header-vanilla src/csakey >> build/csakey
+cat header-vanilla src/cscmd >> build/cscmd
+cat header-vanilla src/cscon >> build/cscon
+cat header-vanilla src/csdkey >> build/csdkey
+cat header-vanilla src/csfwd >> build/csfwd
+cat header-vanilla src/cspkey >> build/cspkey
+cat header-vanilla src/csprofile >> build/csprofile
+cat header-vanilla src/cssend >> build/cssend
+cat header-vanilla src/cssendx >> build/cssendx
+cat header-vanilla src/csserver >> build/csserver
+cat header-vanilla src/csxdpy >> build/csxdpy
+cat header-vanilla src/csxkey >> build/csxkey

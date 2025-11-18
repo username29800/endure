@@ -1,0 +1,7 @@
+#!/bin/sh
+header=$1
+ls -l src | sed 1d | sed 's,^.* ,,' > csbuild.builder
+rm build/*
+sed -i 's,^.*$,cat '$header' src/& >> build/&,' csbuild.builder
+sh csbuild.builder
+chmod -R 755 build/
