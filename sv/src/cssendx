@@ -1,0 +1,6 @@
+#!/bin/sh
+#host=$hostname
+#line=$3
+#ruser=$user
+xauth list | grep -n '.\?' | grep '^'$xline':' | sed 's,^[0-9]*:,,' > $prefix/sidearmconnect/sacfwdkey/key
+scp -i $prefix/sidearmconnect/sacsshhkey/key -O -P "$port" "$prefix"/sidearmconnect/sacfwdkey/key $user@$hostname:$rprefix/sidearmconnect/rcvdest/xauthkey

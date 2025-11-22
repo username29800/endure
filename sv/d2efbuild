@@ -1,0 +1,17 @@
+#!/bin/sh
+format=$1
+out=$2
+header=d2efheader
+#cat $header > d2ef.builder
+cat $format > d2ef.build0
+sed -i 's,^[^ ]* ,&= \\$\\(,' d2ef.build0
+sed -i 's, = ,=,' d2ef.build0
+sed -i 's,$,\\),' d2ef.build0
+sed -i 's,^.*$,echo & >> $1,' d2ef.build0
+cat d2efheader d2ef.build0 > d2ef.builder
+cat d2ef.builder
+echo "" > $out
+sh d2ef.builder $out
+sed -i 1d $out
+#rm d2ef.build0
+#rm d2ef.builder

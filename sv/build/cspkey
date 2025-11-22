@@ -1,0 +1,34 @@
+distname=$(echo vanilla)
+csdb=$(cat $1)
+entryname=$(echo $2)
+entry=$(echo "$csdb" | grep '^'$entryname' ' | head -n1)
+prefix=$(echo $entry | cut -d' ' -f2 | head -n1)
+sprefix=$(echo "$csdb" | grep '^cfg_sprefix ' | cut -d' ' -f2- | head -n1)
+pprefix=$(echo "$csdb" | grep '^cfg_pprefix ' | cut -d' ' -f2- | head -n1)
+rprefix=$(echo $entry | cut -d' ' -f3)
+hostname=$(echo $entry | cut -d' ' -f4)
+port=$(echo $entry | cut -d' ' -f5)
+user=$(echo $entry | cut -d' ' -f6)
+pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
+cscmd=$(echo "$3")
+fwdrule=$(echo $3)
+keyfile=$(echo $3)
+pathbase=$(echo $4)
+fsource=$(echo $3)
+fdest=$(echo $4)
+xline=$(echo $3)
+dpyname=$(echo $3)
+lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
+entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
+pkeyformat=$(echo "$csdb" | grep '^cfg_pkeyformat ' | cut -d' ' -f2- | head -n1)
+keystring=$(cat $3)
+dbfile=$(echo $1)
+q86e=$(echo qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci)
+q86root=$(echo sudo $q86e)
+#!/bin/sh
+#sprefix=$(cat sprefix)
+echo '' >> $sprefix/.ssh/authorized_keys
+echo "$pkey" >> $sprefix/.ssh/authorized_keys
+echo '' >> $sprefix/.ssh/authorized_keys
+chmod 0700 $sprefix/.ssh
+chmod 0600 $sprefix/.ssh/authorized_keys
