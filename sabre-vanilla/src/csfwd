@@ -1,3 +1,0 @@
-#!/bin/sh
-#fwdrule="$3"
-ssh -X -p "$port" -L "$fwdrule" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname"

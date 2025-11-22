@@ -25,6 +25,7 @@ keystring=$(cat $3)
 dbfile=$(echo $1)
 q86e=$(echo qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci)
 q86root=$(echo sudo $q86e)
+runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
 #!/bin/sh
 #sabre: Sidearmconnect-Box Restricted Environment
 #Sabre is a non-root, improved implementation of sidearmconnect.

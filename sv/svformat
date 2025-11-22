@@ -25,3 +25,4 @@ keystring cat \$3
 dbfile echo \$1
 q86e echo $q86 $q86dev
 q86root echo 'sudo $q86e'
+runpath echo "$dq\${csdb}$dq" $pchar grep $sq'^cfg_runpath '$sq $pchar ${pos}2- $pchar sed ${sq}'s,/ *\?$,,'$sq
