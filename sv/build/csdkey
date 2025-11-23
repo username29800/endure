@@ -26,7 +26,7 @@ dbfile=$(echo $1)
 q86e=$(echo qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci)
 q86root=$(echo sudo $q86e)
 runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
-cmdname=$(cat ./svlcmd)
+cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
 #!/bin/sh
 #sprefix=$(cat sprefix)
 sed -i 's,^'"$pkey"',,' $sprefix/.ssh/authorized_keys

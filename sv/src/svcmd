@@ -1,0 +1,1 @@
+sed -i 's,^cfg_launch .*\?$,cfg_launch '"$1"',' $dbfile

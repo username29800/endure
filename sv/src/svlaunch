@@ -1,1 +1,1 @@
-echo ${runpath}/$cmdname "$@"
+${runpath}/$cmdname "$@"

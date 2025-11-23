@@ -11,5 +11,7 @@ csakey: entryline pkeyformat keystring dbfile
 csdkey: sprefix pkey
 cspkey: sprefix pkey
 csxkey: prefix
+svlaunch: runpath cmdname
+svcmd: cmdname dbfile
 
-ALL: database entry hostname port user prefix rprefix sprefix pprefix cscmd fwdrule pathbase keyfile fsource fdest xline dpyname lport entryline pkeyformat keystring dbfile pkey
+ALL: database entry hostname port user prefix rprefix sprefix pprefix cscmd fwdrule pathbase keyfile fsource fdest xline dpyname lport entryline pkeyformat keystring dbfile pkey runpath cmdname
