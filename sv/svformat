@@ -9,6 +9,7 @@ rprefix echo \$entry $pchar ${pos}3
 hostname echo \$entry $pchar ${pos}4
 port echo \$entry $pchar ${pos}5
 user echo \$entry $pchar ${pos}6
+pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
 pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
 cscmd echo $dq\$3$dq
 fwdrule echo \$3
@@ -20,7 +21,6 @@ xline echo \$3
 dpyname echo \$3
 lport echo $dq\$csdb$dq $pchar grep ${sq}'^listen_'${sq}'$entryname'$sq $sq $pchar ${pos}2 $pchar $ln
 entryline echo $dq\$csdb$dq $pchar 'grep -n .'$pchar grep ${sq}'^[0-9]*:'${sq}'$entryname'$sq $sq $pchar cut -d: -f1 $pchar $ln
-pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
 keystring cat ./\$3
 dbfile echo \$1
 q86e echo $q86 $q86dev
