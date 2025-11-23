@@ -1,1 +1,1 @@
-sh -c ${runpath}/$cmdname "$@"
+${runpath}/$cmdname "$@"
