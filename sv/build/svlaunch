@@ -27,4 +27,4 @@ q86e=$(echo qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-
 q86root=$(echo sudo $q86e)
 runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
 cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
-${runpath}/$cmdname \""$@"\"
+${runpath}/$cmdname \'$@\'
