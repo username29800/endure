@@ -1,1 +1,1 @@
-${runpath}/$cmdname \'$@\'
+sh -c ${runpath}/$cmdname "$(echo $@)"
