@@ -1,5 +1,5 @@
 distname=$(echo vanilla)
-csdb=$(cat $1)
+csdb=$(cat ./$1)
 entryname=$(echo $2)
 entry=$(echo "$csdb" | grep '^'$entryname' ' | head -n1)
 prefix=$(echo $entry | cut -d' ' -f2 | head -n1)
@@ -21,11 +21,12 @@ dpyname=$(echo $3)
 lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
 pkeyformat=$(echo "$csdb" | grep '^cfg_pkeyformat ' | cut -d' ' -f2- | head -n1)
-keystring=$(cat $3)
+keystring=$(cat ./$3)
 dbfile=$(echo $1)
 q86e=$(echo qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci)
 q86root=$(echo sudo $q86e)
 runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
+cmdname=$(cat ./svlcmd)
 #!/bin/sh
 #fwdrule="$3"
 ssh -X -p "$port" -L "$fwdrule" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname"

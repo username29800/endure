@@ -1,5 +1,5 @@
 distname echo vanilla
-csdb cat \$1
+csdb cat ./\$1
 entryname echo \$2
 entry echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$entryname'$sq $sq $pchar $ln
 prefix echo \$entry $pchar ${pos}2 $pchar $ln
@@ -21,8 +21,9 @@ dpyname echo \$3
 lport echo $dq\$csdb$dq $pchar grep ${sq}'^listen_'${sq}'$entryname'$sq $sq $pchar ${pos}2 $pchar $ln
 entryline echo $dq\$csdb$dq $pchar 'grep -n .'$pchar grep ${sq}'^[0-9]*:'${sq}'$entryname'$sq $sq $pchar cut -d: -f1 $pchar $ln
 pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
-keystring cat \$3
+keystring cat ./\$3
 dbfile echo \$1
 q86e echo $q86 $q86dev
 q86root echo 'sudo $q86e'
 runpath echo "$dq\${csdb}$dq" $pchar grep $sq'^cfg_runpath '$sq $pchar ${pos}2- $pchar sed ${sq}'s,/ *\?$,,'$sq
+cmdname cat ./svlcmd
