@@ -1,1 +1,1 @@
-sed -i 's,^cfg_launch .*\?$,cfg_launch '"$1"',' $dbfile
+sed -i 's,^cfg_launch .*\?$,cfg_launch '"$2"',' $dbfile
