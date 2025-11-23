@@ -1,6 +1,8 @@
 cfg_sprefix /home/user
 cfg_pprefix .
-cfg_pkeyformat pk_
+cfg_pkeyformat pk+
+cfg_runpath build
+cfg_launch cscon
 
 test test /home/user/test localhost 22 user
 test1 test1 /home/user/test1 localhost 22 user
@@ -10,4 +12,4 @@ server server
 listen_server 22
 
 client client
-pk_client
+pk+client
