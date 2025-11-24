@@ -29,4 +29,4 @@ runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$
 cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
 #!/bin/sh
 #cmd="$3"
-ssh -X -p "$port" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname" -t "$cscmd"
+ssh -YC -p "$port" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname" -t "$cscmd"
