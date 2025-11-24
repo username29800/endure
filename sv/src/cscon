@@ -1,2 +1,2 @@
 #!/bin/sh
-ssh -X -p "$port" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname"
+ssh -YC -p "$port" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname"
