@@ -11,7 +11,8 @@ rprefix echo \$entry $pchar ${pos}3
 hostname echo \$entry $pchar ${pos}4
 port echo \$entry $pchar ${pos}5
 user echo \$entry $pchar ${pos}6
-selfname echo ${dq}\$csdb$dq $pchar grep ${sq}'^cfg_selfname '$sq $pchar ${pos}2- $pchar $ln
+snidx echo ${dq}\$csdb$dq $pchar grep ${dq}'^nameidx_$entryname'$dq $pchar ${pos}2- $pchar $ln
+selfname echo ${dq}\$csdb$dq $pchar grep ${dq}'^cfg_selfname$snidx '$dq $pchar ${pos}2- $pchar $ln
 pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
 pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
 cscmd echo $dq\$arg3$dq
