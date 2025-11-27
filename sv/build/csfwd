@@ -33,4 +33,4 @@ runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$
 cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
 #!/bin/sh
 #fwdrule="$3"
-ssh -YC -p "$port" "$fwdruleset" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname"
+ssh -YC -p "$port" $fwdruleset -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname"
