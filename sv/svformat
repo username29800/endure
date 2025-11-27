@@ -14,7 +14,7 @@ user echo \$entry $pchar ${pos}6
 pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
 pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
 cscmd echo $dq\$arg3$dq
-fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(lf\|rf\)_$entryname'$dq $pchar sed ${dq}'s,::,:$hostname:,'$dq $pchar sed ${dq}'s,^lf_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^rf_$entryname ,-R ,'$dq $pchar tr ${sq}${nwln}$sq $sq $sq
+fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(lf\|rf\)_$entryname'$dq $pchar sed ${dq}'s,::,:$hostname:,'$dq $pchar sed ${dq}'s,^lf_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^rf_$entryname ,-R ,'$dq $pchar tr ${sq}${nwln}$sq $sq $sq $pchar sed ${sq}'s, $,,'$sq
 keyfile echo \$arg3
 pathbase echo \$4
 fsource echo \$arg3
