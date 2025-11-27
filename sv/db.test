@@ -3,10 +3,11 @@ cfg_pprefix .
 cfg_pkeyformat pk+
 cfg_runpath build
 cfg_launch cscon
+cfg_selfname localhost
 
 test test /home/user/test localhost 22 user
 test1 test1 /home/user/test1 localhost 22 user
-test2 test2 /home/user/test2 localhost 22 user
+test2 test2 /home/user/test2 127.0.0.1 22 user
 lf_test2 6000::6010
 rf_test2 6001::6000
 
