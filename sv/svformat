@@ -4,15 +4,19 @@ arg3 echo \$3 $pchar sed ${sq}'s,^$,.,'$sq
 csdb cat \$arg1
 entryname echo \$2
 entry echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$entryname'$sq $sq $pchar $ln
-prefix echo \$entry $pchar ${pos}2 $pchar $ln
 sprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
-pprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pprefix '$sq $pchar ${pos}2- $pchar $ln
-rprefix echo \$entry $pchar ${pos}3
-hostname echo \$entry $pchar ${pos}4
-port echo \$entry $pchar ${pos}5
-user echo \$entry $pchar ${pos}6
-snidx echo ${dq}\$csdb$dq $pchar grep ${dq}'^nameidx_$entryname'$dq $pchar ${pos}2- $pchar $ln
+hostname echo \$entry $pchar ${pos}2
+port echo \$entry $pchar ${pos}3
+user echo \$entry $pchar ${pos}4
+ididx echo $dq\$csdb$dq $pchar grep ${dq}'^id_$entryname '$dq $pchar ${pos}2- $pchar $ln
+id echo $dq\$csdb$dq $pchar grep ${dq}'^cfg_id$ididx '$dq $pchar ${pos}2- $pchar $ln
+hostkey echo $dq\$csdb$dq $pchar grep ${dq}'^cfg_id$ididx '$dq $pchar ${pos}2- $pchar $ln
+snidx echo ${dq}\$csdb$dq $pchar grep ${dq}'^nameidx_$entryname '$dq $pchar ${pos}2- $pchar $ln
 selfname echo ${dq}\$csdb$dq $pchar grep ${dq}'^cfg_selfname$snidx '$dq $pchar ${pos}2- $pchar $ln
+lstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^local_$entryname '$dq $pchar ${pos}2- $pchar $ln
+rstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^remote_$entryname '$dq $pchar ${pos}2- $pchar $ln
+localstor echo ${dq}\$csdb$dq $pchar grep ${dq}'^cfg_storage$lstoridx '$dq $pchar ${pos}2- $pchar $ln
+remotestor echo ${dq}\$csdb$dq $pchar grep ${dq}'^cfg_storage$rstoridx '$dq $pchar ${pos}2- $pchar $ln
 pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
 pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
 cscmd echo $dq\$arg3$dq

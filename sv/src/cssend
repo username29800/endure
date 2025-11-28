@@ -1,4 +1,4 @@
 #!/bin/sh
 #fsource="$3"
 #fdest="$4"
-scp -i $prefix/sidearmconnect/sacsshhkey/key -O -P "$port" "$fsource" $user@$hostname:$rprefix/sidearmconnect/rcvdest/"$fdest"
+scp -i "$id" -O -P "$port" "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"
