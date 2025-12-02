@@ -12,20 +12,20 @@ cfg_id1 id_rsa
 cfg_id2 id_server
 
 test localhost 22 user
-nameidx_test 3
+name_test 3
 test1 localhost 22 user
-nameidx_test1 1
+name_test1 1
 test2 127.0.0.1 22 user
-nameidx_test2 2
+name_test2 2
 id_test2 1
 lf_test2 6000::6010
 rf_test2 6001::6000
-local_test2 2
-remote_test2 2
+stor_lc_test2 2
+stor_rm_test2 2
 
-server server
+server 0
 listen_server 22
 id_server 2
 
-client client
+client 0
 pk+client

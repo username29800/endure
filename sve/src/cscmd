@@ -1,0 +1,3 @@
+#!/bin/sh
+#cmd="$3"
+ssh -YC -p "$port" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname" -t "$cscmd"

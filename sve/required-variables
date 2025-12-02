@@ -1,0 +1,17 @@
+header: database entry
+cscon: hostname port user prefix
+cscmd: hostname port user prefix cscmd
+csfwd: hostname port user prefix fwdruleset
+csprofile: prefix rprefix sprefix pprefix pathbase keyfile
+cssend: hostname port user prefix rprefix fsource fdest
+cssendx: hostname port user prefix rprefix xline
+csxdpy: prefix dpyname
+csserver: prefix lport
+csakey: entryline pkeyformat keystring dbfile
+csdkey: sprefix pkey
+cspkey: sprefix pkey
+csxkey: prefix
+svlaunch: runpath cmdname
+svcmd: cmdname dbfile
+
+ALL: database entry hostname port user prefix rprefix sprefix pprefix cscmd fwdruleset pathbase keyfile fsource fdest xline dpyname lport entryline pkeyformat keystring dbfile pkey runpath cmdname
