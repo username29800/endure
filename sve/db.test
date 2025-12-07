@@ -1,25 +1,34 @@
+# comments begin with '#'
+# you can test this database using svtest utility under build/
+
+## section 1: global config
 cfg_sprefix /home/user
 cfg_pkeyformat pk+
 
+## section 2: components
+# selfname(client hostname for remote forwarding)
 com_selfname1 localhost
 com_selfname2 example.test
 com_selfname3 127.0.0.1
+# storage(src/dest pool for file transfer)
 com_storage1 test
 com_storage2 test2
+# identity key (auth key or hostkey : private key only)
 com_id1 id_rsa
 com_id2 id_server
 
+## section 3: test entry
+# remote entry / hybrid entry
 test2 127.0.0.1 22 user
 name_test2 2
 id_test2 1
-lf_test2 6000::6010
-rf_test2 6001::6000
+hkey_test2 1
+fwd2loc_test2 6000::6010
+fwd2rem_test2 6001::6000
 stor_lc_test2 2
 stor_rm_test2 2
 
-server 0
+# server-only entry
+server localhost 22 john_admin
 listen_server 22
 hkey_server 2
-
-client 0
-pk+client

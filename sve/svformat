@@ -6,7 +6,7 @@ arg1 echo \$1 $pchar $fearg
 arg3 echo \$3 $pchar $fearg
 
 #section 30: parser fundamentals
-csdb cat \$arg1
+csdb cat \$arg1 $pchar grep $sq'^[^#]'$sq
 @entryname \$2
 entry echo $dq\$csdb$dq $pchar grep ${dq}^'$entryname '$dq $pchar $ln
 
@@ -20,13 +20,14 @@ keystring cat \$arg3
 #section 40: global config
 sprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
 pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
+xsh ${sve_load}
 
 #section 50: entry-specific config
 hostname echo \$entry $pchar ${pos}2
 port echo \$entry $pchar ${pos}3
 user echo \$entry $pchar ${pos}4
 pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
-fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(lf\|rf\)_$entryname '$dq $pchar sed ${dq}'s,^lf_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^rf_$entryname ,-R ,'$dq $pchar sed ${dq}'s,^-L [^:]*:,&$hostname,'$dq $pchar sed ${dq}'s,^-R [^:]*:,&$selfname,'$dq $pchar tr ${sq}${nwln}$sq $sq $sq $pchar sed ${sq}'s, $,,'$sq
+fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(fwd2loc\|fwd2rem\)_$entryname '$dq $pchar sed ${dq}'s,^fwd2loc_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^fwd2rem_$entryname ,-R ,'$dq $pchar sed ${dq}'s,^-L [^:]*:,&$hostname,'$dq $pchar sed ${dq}'s,^-R [^:]*:,&$selfname,'$dq $pchar tr ${sq}${nwln}$sq $sq $sq $pchar sed ${sq}'s, $,,'$sq
 @keyfile \$arg3
 lport echo $dq\$csdb$dq $pchar grep ${sq}'^listen_'${sq}'$entryname'$sq $sq $pchar ${pos}2 $pchar $ln
 entryline echo $dq\$csdb$dq $pchar 'grep -n .'$pchar grep ${sq}'^[0-9]*:'${sq}'$entryname'$sq $sq $pchar cut -d: -f1 $pchar $ln

@@ -1,7 +1,7 @@
 distname=vanilla
 arg1=$(echo $1 | sed 's,^$,.,')
 arg3=$(echo $3 | sed 's,^$,.,')
-csdb=$(cat $arg1)
+csdb=$(cat $arg1 | grep '^[^#]')
 entryname=$2
 entry=$(echo "$csdb" | grep "^$entryname " | head -n1)
 cscmd="$arg3"
@@ -15,7 +15,7 @@ hostname=$(echo $entry | cut -d' ' -f2)
 port=$(echo $entry | cut -d' ' -f3)
 user=$(echo $entry | cut -d' ' -f4)
 pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
-fwdruleset=$(echo "$csdb" | grep "^\(lf\|rf\)_$entryname " | sed "s,^lf_$entryname ,-L ," | sed "s,^rf_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr '\\n' ' ' | sed 's, $,,')
+fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr '\\n' ' ' | sed 's, $,,')
 keyfile=$arg3
 lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
