@@ -1,4 +1,4 @@
 #!/bin/sh
 #fsource="$3"
 #fdest="$4"
-scp -i "$id" -O -P "$port" "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"
+$xcp -i "$id" -O -P "$port" "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"

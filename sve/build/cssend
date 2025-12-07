@@ -11,11 +11,17 @@ dbfile=$arg1
 keystring=$(cat $arg3)
 sprefix=$(echo "$csdb" | grep '^cfg_sprefix ' | cut -d' ' -f2- | head -n1)
 pkeyformat=$(echo "$csdb" | grep '^cfg_pkeyformat ' | cut -d' ' -f2- | head -n1)
+xsh=$(echo "$csdb" | grep "^cfg_ssh " | head -n1 | cut -d' ' -f2-)
+xsh=$(echo $xsh | sed 's,^$,ssh,')
+xcp=$(echo "$csdb" | grep "^cfg_scp " | head -n1 | cut -d' ' -f2-)
+xcp=$(echo $xcp | sed 's,^$,scp,')
+xsv=$(echo "$csdb" | grep "^cfg_sshd " | head -n1 | cut -d' ' -f2-)
+xsv=$(echo $xsv | sed 's,^$,/usr/sbin/sshd,')
 hostname=$(echo $entry | cut -d' ' -f2)
 port=$(echo $entry | cut -d' ' -f3)
 user=$(echo $entry | cut -d' ' -f4)
 pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
-fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr '\\n' ' ' | sed 's, $,,')
+fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr '\n' ' ' | sed 's, $,,')
 keyfile=$arg3
 lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
@@ -36,4 +42,4 @@ cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
 #!/bin/sh
 #fsource="$3"
 #fdest="$4"
-scp -i "$id" -O -P "$port" "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"
+$xcp -i "$id" -O -P "$port" "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"

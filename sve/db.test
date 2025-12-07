@@ -4,6 +4,10 @@
 ## section 1: global config
 cfg_sprefix /home/user
 cfg_pkeyformat pk+
+# ssh executable config (optional)
+#cfg_ssh ssh
+#cfg_scp scp
+#cfg_sshd /usr/sbin/sshd
 
 ## section 2: components
 # selfname(client hostname for remote forwarding)

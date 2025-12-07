@@ -20,7 +20,12 @@ keystring cat \$arg3
 #section 40: global config
 sprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
 pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
-xsh ${sve_load}
+xsh ${sve_load}\$csdb${sve_find}'^cfg_ssh '${sve_nc}
+xsh echo \$xsh $pchar ${sve_a}ssh${sve_b}
+xcp ${sve_load}\$csdb${sve_find}'^cfg_scp '${sve_nc}
+xcp echo \$xcp $pchar ${sve_a}scp${sve_b}
+xsv ${sve_load}\$csdb${sve_find}'^cfg_sshd '${sve_nc}
+xsv echo $\xsv $pchar ${sve_a}/usr/sbin/sshd${sve_b}
 
 #section 50: entry-specific config
 hostname echo \$entry $pchar ${pos}2

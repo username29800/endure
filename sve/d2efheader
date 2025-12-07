@@ -9,7 +9,7 @@ pchar=\|
 redir=\>
 bksh=\\
 apnd='>>'
-nwln='\\n'
+nwln='\n'
 
 #section 2: utility presets
 pos='cut -d'${sq}' '${sq}' -f'
@@ -20,6 +20,8 @@ q86='qemu-system-x86 -machine q35 -cpu max -accel kvm'
 q86dev='-device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci'
 #fearg: fill empty args
 fearg="sed 's,^$,.,'"
+sve_a="sed 's,^$,"
+sve_b=",'"
 #ssto: Suppress STandard Output
 ssto=' > /dev/null'
 #se2o: StdErr To stdOut
@@ -29,8 +31,10 @@ bkgr="${ssto}${se2o} &"
 
 #section 3: (experimental) common patterns
 #usage 1: ${sve_load}[variable]${sve_find}${sve_end}
-#usage 2: cat [filename] ${dq}${sve_find} [pattern] ${sve_end}
+#usage 2: cat [filename] ${sve_file}[pattern]${sve_end}
 sve_load="echo ${dq}"
+sve_file="$pchar grep ${dq}"
 sve_find="$dq $pchar grep ${dq}"
-sve_pos="${dq} ${pchar} ${ln} ${pos}"
+sve_col="${dq} ${pchar} ${ln} $pchar ${pos}"
+sve_nc="${dq} ${pchar} ${ln} $pchar ${pos}2-"
 sve_end="${dq} ${pchar} ${ln}"

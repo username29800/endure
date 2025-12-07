@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/sbin/sshd -h "$hostkey" -p "$lport"
+$xsv -h "$hostkey" -p "$lport"
