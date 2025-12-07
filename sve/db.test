@@ -27,6 +27,7 @@ fwd2loc_test2 6000::6010
 fwd2rem_test2 6001::6000
 stor_lc_test2 2
 stor_rm_test2 2
+pk+test2 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
 
 # server-only entry
 server localhost 22 john_admin
