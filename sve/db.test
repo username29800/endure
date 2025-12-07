@@ -9,10 +9,6 @@ com_storage2 test2
 com_id1 id_rsa
 com_id2 id_server
 
-test localhost 22 user
-name_test 3
-test1 localhost 22 user
-name_test1 1
 test2 127.0.0.1 22 user
 name_test2 2
 id_test2 1
@@ -23,7 +19,7 @@ stor_rm_test2 2
 
 server 0
 listen_server 22
-id_server 2
+hkey_server 2
 
 client 0
 pk+client

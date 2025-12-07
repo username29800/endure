@@ -3,21 +3,22 @@ format=$1
 out=$2
 header=d2efheader
 #cat $header > d2ef.builder
-cat $format | grep . | grep '^[^#@]' > d2ef.build0
-cat $format | grep . | grep '^@' > d2ef.build1
-sed -i 's,^[^ ]* ,&= \\$\\(,' d2ef.build0
+cat $format | grep . | grep '^[^#]' > d2ef.build0
+sed -i 's,^@[^ ]* ,&=,' d2ef.build0
+sed -i 's, =,=,' d2ef.build0
+sed -i 's,^@[^=]*=.*$,&,' d2ef.build0
+sed -i 's,^[^@ ]* ,&= \\$\\(,' d2ef.build0
 sed -i 's, = ,=,' d2ef.build0
-sed -i 's,$,\\),' d2ef.build0
+sed -i 's,^[^@].*$,&\\),' d2ef.build0
 sed -i 's,^.*$,echo & >> $1,' d2ef.build0
-sed -i 's,^@,,' d2ef.build1
-sed -i 's, *,='\'',' d2ef.build1
-sed -i 's,$,'\'',' d2ef.build1
+sed -i 's,^echo @,echo ,' d2ef.build0
+#sed -i 's, ,='\"',' d2ef.build0
+#sed -i 's,$,'\"',' d2ef.build0
 cat d2efheader > d2ef.builder
 echo '' >> d2ef.builder
 cat d2ef.build0 >> d2ef.builder
 cat d2ef.builder
 echo "" > $out
-cat d2ef.build1 >> $out
 sh d2ef.builder $out
 sed -i 1d $out
 #rm d2ef.build0

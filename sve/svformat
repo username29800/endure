@@ -1,53 +1,54 @@
-#section 1: distribution metadata
+#section 10: distribution metadata
 @distname vanilla
 
-#section 2: argument preprocessor
+#section 20: argument preprocessor
 arg1 echo \$1 $pchar $fearg
 arg3 echo \$3 $pchar $fearg
 
-#section 3: 
+#section 30: parser fundamentals
 csdb cat \$arg1
-entryname echo \$2
+@entryname \$2
 entry echo $dq\$csdb$dq $pchar grep ${dq}^'$entryname '$dq $pchar $ln
 
-sprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
+#section 31: common variables
+@cscmd $dq\$arg3$dq
+@fsource \$arg3
+@fdest \$4
+@dbfile \$arg1
+keystring cat \$arg3
 
+#section 40: global config
+sprefix echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_sprefix '$sq $pchar ${pos}2- $pchar $ln
+pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
+
+#section 50: entry-specific config
 hostname echo \$entry $pchar ${pos}2
 port echo \$entry $pchar ${pos}3
 user echo \$entry $pchar ${pos}4
+pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
+fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(lf\|rf\)_$entryname '$dq $pchar sed ${dq}'s,^lf_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^rf_$entryname ,-R ,'$dq $pchar sed ${dq}'s,^-L [^:]*:,&$hostname,'$dq $pchar sed ${dq}'s,^-R [^:]*:,&$selfname,'$dq $pchar tr ${sq}${nwln}$sq $sq $sq $pchar sed ${sq}'s, $,,'$sq
+@keyfile \$arg3
+lport echo $dq\$csdb$dq $pchar grep ${sq}'^listen_'${sq}'$entryname'$sq $sq $pchar ${pos}2 $pchar $ln
+entryline echo $dq\$csdb$dq $pchar 'grep -n .'$pchar grep ${sq}'^[0-9]*:'${sq}'$entryname'$sq $sq $pchar cut -d: -f1 $pchar $ln
 
+#section 51: components
+#identity key; private key
 ididx echo $dq\$csdb$dq $pchar grep ${dq}'^id_$entryname '$dq $pchar ${pos}2- $pchar $ln
 id echo $dq\$csdb$dq $pchar grep ${dq}'^com_id$ididx '$dq $pchar ${pos}2- $pchar $ln
-
-hkidx echo $dq\$csdb$dq $pchar grep ${dq}'^id_$entryname '$dq $pchar ${pos}2- $pchar $ln
+#hostkey for sshd launch; private key
+hkidx echo $dq\$csdb$dq $pchar grep ${dq}'^hkey_$entryname '$dq $pchar ${pos}2- $pchar $ln
 hostkey echo $dq\$csdb$dq $pchar grep ${dq}'^com_id$hkidx '$dq $pchar ${pos}2- $pchar $ln
-
+#selfname for remote forwarding; client's hostname or ip
 snidx echo ${dq}\$csdb$dq $pchar grep ${dq}'^name_$entryname '$dq $pchar ${pos}2- $pchar $ln
 selfname echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_selfname$snidx '$dq $pchar ${pos}2- $pchar $ln
-
+#storage configurations
 lstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^stor_lc_$entryname '$dq $pchar ${pos}2- $pchar $ln
 rstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^stor_rm_$entryname '$dq $pchar ${pos}2- $pchar $ln
 localstor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_storage$lstoridx '$dq $pchar ${pos}2- $pchar $ln
 remotestor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_storage$rstoridx '$dq $pchar ${pos}2- $pchar $ln
 
-pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pkeyformat '$sq $pchar ${pos}2- $pchar $ln
-pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
-
-cscmd echo $dq\$arg3$dq
-fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(lf\|rf\)_$entryname '$dq $pchar sed ${dq}'s,^lf_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^rf_$entryname ,-R ,'$dq $pchar sed ${dq}'s,^-L [^:]*:,&$hostname,'$dq $pchar sed ${dq}'s,^-R [^:]*:,&$selfname,'$dq $pchar tr ${sq}${nwln}$sq $sq $sq $pchar sed ${sq}'s, $,,'$sq
-keyfile echo \$arg3
-
-fsource echo \$arg3
-fdest echo \$4
-xline echo \$arg3
-dpyname echo \$arg3
-lport echo $dq\$csdb$dq $pchar grep ${sq}'^listen_'${sq}'$entryname'$sq $sq $pchar ${pos}2 $pchar $ln
-entryline echo $dq\$csdb$dq $pchar 'grep -n .'$pchar grep ${sq}'^[0-9]*:'${sq}'$entryname'$sq $sq $pchar cut -d: -f1 $pchar $ln
-keystring cat \$arg3
-dbfile echo \$arg1
-
-q86e echo $q86 $q86dev
-q86root echo 'sudo $q86e'
-
+#section 60: others
+@q86e $dq''$q86 $q86dev''$dq
+@q86root $dq'sudo $q86e'$dq
 runpath echo "$dq\${csdb}$dq" $pchar grep $sq'^cfg_runpath '$sq $pchar ${pos}2- $pchar sed ${sq}'s,/ *\?$,,'$sq
 cmdname echo ${dq}\$csdb$dq $pchar grep ${sq}'^cfg_launch '$sq $pchar ${pos}2-
