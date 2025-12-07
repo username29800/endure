@@ -1,7 +1,7 @@
 #!/bin/sh
 sh d2efbuild svformat svheader
 sh csbuild svheader
-rm d2ef.build0 d2ef.builder
+rm d2ef.build0 d2ef.build1 d2ef.builder
 rm csbuild.builder
 lm=$(cat build/svtest | wc -l)
 svt=$(cat build/svtest | sed '$d' | sed '$d')

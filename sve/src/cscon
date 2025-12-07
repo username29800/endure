@@ -1,2 +1,2 @@
 #!/bin/sh
-ssh -YC -p "$port" -i "$id" $user@"$hostname"
+$xsh -YC -p "$port" -i "$id" $user@"$hostname"

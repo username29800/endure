@@ -1,15 +1,13 @@
 cfg_sprefix /home/user
-cfg_pprefix .
 cfg_pkeyformat pk+
-cfg_runpath build
-cfg_launch cscon
-cfg_selfname1 localhost
-cfg_selfname2 example.test
-cfg_selfname3 127.0.0.1
-cfg_storage1 test
-cfg_storage2 test2
-cfg_id1 id_rsa
-cfg_id2 id_server
+
+com_selfname1 localhost
+com_selfname2 example.test
+com_selfname3 127.0.0.1
+com_storage1 test
+com_storage2 test2
+com_id1 id_rsa
+com_id2 id_server
 
 test localhost 22 user
 name_test 3
