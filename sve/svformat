@@ -25,7 +25,7 @@ xsh echo \$xsh $pchar ${sve_a}ssh${sve_b}
 xcp ${sve_load}\$csdb${sve_find}'^cfg_scp '${sve_nc}
 xcp echo \$xcp $pchar ${sve_a}scp${sve_b}
 xsv ${sve_load}\$csdb${sve_find}'^cfg_sshd '${sve_nc}
-xsv echo $\xsv $pchar ${sve_a}/usr/sbin/sshd${sve_b}
+xsv echo \$xsv $pchar ${sve_a}/usr/sbin/sshd${sve_b}
 
 #section 50: entry-specific config
 hostname echo \$entry $pchar ${pos}2
