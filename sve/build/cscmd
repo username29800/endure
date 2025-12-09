@@ -41,8 +41,8 @@ q86e="qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,ne
 q86root="sudo $q86e"
 runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
 cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
-eux_home=$(echo "$csdb" | grep "^eux_home " | head -n1 | cut -d' ' -f2-)
-eux_sve_bin=$(echo "$csdb" | grep "^eux_bin " | head -n1 | cut -d' ' -f2- | sed 's,^$,.,')
+eux_home=$(echo "$csdb" | grep "^eux_home " | head -n1 | cut -d' ' -f2- | sed 's,^$,$(whoami),')
+eux_sve_bin=$(echo "$csdb" | grep "^eux_bin " | head -n1 | cut -d' ' -f2- | sed 's,^$,$(pwd),')
 #!/bin/sh
 #cmd="$3"
 $xsh -YC -p "$port" -i $prefix'/sidearmconnect/sacsshhkey/key' $user@"$hostname" -t "$cscmd"
