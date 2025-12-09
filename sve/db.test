@@ -5,9 +5,9 @@
 cfg_dotssh /home/user/.ssh
 cfg_pubkeyis pk+
 # ssh executable config (optional)
-#cfg_ssh ssh
-#cfg_scp scp
-#cfg_sshd /usr/sbin/sshd
+cfg_ssh ssh
+cfg_scp scp
+cfg_sshd /usr/sbin/sshd
 
 ## section 2: components
 # selfname(client hostname for remote forwarding)
@@ -20,6 +20,12 @@ com_storage2 test2
 # identity key (auth key or hostkey : private key only)
 com_id1 id_rsa
 com_id2 id_server
+
+## section X1: EUX config
+# user's home directory
+eux_home /home/user
+# sve executable path
+eux_bin .
 
 ## section 3: test entry
 # remote entry / hybrid entry

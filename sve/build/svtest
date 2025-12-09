@@ -41,6 +41,8 @@ q86e="qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,ne
 q86root="sudo $q86e"
 runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
 cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
+eux_home=$(echo "$csdb" | grep "^eux_home " | head -n1 | cut -d' ' -f2-)
+eux_sve_bin=$(echo "$csdb" | grep "^eux_bin " | head -n1 | cut -d' ' -f2- | sed 's,^$,.,')
 #!/bin/sh
 echo
 echo distname="$distname"
@@ -86,3 +88,5 @@ echo q86e="$q86e"
 echo q86root="$q86root"
 echo runpath="$runpath"
 echo cmdname="$cmdname"
+echo eux_home="$eux_home"
+echo eux_sve_bin="$eux_sve_bin"

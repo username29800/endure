@@ -1,0 +1,117 @@
+distname=vanilla
+arg1=$(echo $1 | sed 's,^$,.,')
+arg3=$(echo $3 | sed 's,^$,.,')
+csdb=$(cat $arg1 | grep '^[^#]')
+entryname=$2
+entry=$(echo "$csdb" | grep "^$entryname " | head -n1)
+cscmd="$arg3"
+fsource=$arg3
+fdest=$4
+dbfile=$arg1
+keystring=$(cat $arg3)
+dotssh=$(echo "$csdb" | grep '^cfg_dotssh ' | cut -d' ' -f2- | head -n1 | sed 's,/ *\?$,,')
+pkeyformat=$(echo "$csdb" | grep '^cfg_pubkeyis ' | cut -d' ' -f2- | head -n1)
+xsh0=$(echo "$csdb" | grep "^cfg_ssh " | head -n1 | cut -d' ' -f2-)
+xsh=$(echo $xsh0 | sed 's,^$,ssh,')
+xcp0=$(echo "$csdb" | grep "^cfg_scp " | head -n1 | cut -d' ' -f2-)
+xcp=$(echo $xcp0 | sed 's,^$,scp,')
+xsv0=$(echo "$csdb" | grep "^cfg_sshd " | head -n1 | cut -d' ' -f2-)
+xsv=$(echo $xsv0 | sed 's,^$,/usr/sbin/sshd,')
+snidx=$(echo "$csdb" | grep "^name_$entryname " | cut -d' ' -f2- | head -n1)
+selfname=$(echo "$csdb" | grep "^com_selfname$snidx " | cut -d' ' -f2- | head -n1)
+hostname=$(echo $entry | cut -d' ' -f2)
+port=$(echo $entry | cut -d' ' -f3)
+user=$(echo $entry | cut -d' ' -f4)
+pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
+fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr '\n' ' ' | sed 's, $,,')
+keyfile=$arg3
+lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
+entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
+ididx=$(echo "$csdb" | grep "^id_$entryname " | cut -d' ' -f2- | head -n1)
+id=$(echo "$csdb" | grep "^com_id$ididx " | cut -d' ' -f2- | head -n1)
+hkidx=$(echo "$csdb" | grep "^hkey_$entryname " | cut -d' ' -f2- | head -n1)
+hostkey=$(echo "$csdb" | grep "^com_id$hkidx " | cut -d' ' -f2- | head -n1)
+snidx="$snidx"
+selfname="$selfname"
+lstoridx=$(echo "$csdb" | grep "^stor_lc_$entryname " | cut -d' ' -f2- | head -n1)
+rstoridx=$(echo "$csdb" | grep "^stor_rm_$entryname " | cut -d' ' -f2- | head -n1)
+localstor=$(echo "$csdb" | grep "^com_storage$lstoridx " | cut -d' ' -f2- | head -n1)
+remotestor=$(echo "$csdb" | grep "^com_storage$rstoridx " | cut -d' ' -f2- | head -n1)
+q86e="qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci"
+q86root="sudo $q86e"
+runpath=$(echo "${csdb}" | grep '^cfg_runpath ' | cut -d' ' -f2- | sed 's,/ *\?$,,')
+cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
+eux_home=$(echo "$csdb" | grep "^eux_home " | head -n1 | cut -d' ' -f2-)
+eux_sve_bin=$(echo "$csdb" | grep "^eux_bin " | head -n1 | cut -d' ' -f2- | sed 's,^$,.,')
+#!/bin/sh
+#user experience configuration utility - nonroot version
+echo 'usage: sh cfgmini.sh [your home dir] [path to endure root]'
+src=$eux_sve_bin
+dest=$eux_home
+mkdir $dest/eux-utils
+mkdir $dest/sve-eux-build
+cd $dest/sve-eux-build
+#echo 'adduse.r/psw.d/
+#adduse.r/psw.d/' | passwd $user
+#echo vncpasswd - enter a new vnc password
+echo "adusr.wd
+adusr.wd
+n" | vncpasswd
+cd $dest
+mkdir Downloads Documents Pictures Music Videos Projects
+mkdir -p .config/tigervnc
+echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
+echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
+echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
+echo 'export PULSE_SERVER=localhost' >> .zshrc.1
+echo 'export PATH=$PATH:'"$(cd $src && pwd)" >> .zshrc.1
+mv $dest/.profile $dest/.profile.eux.b
+#echo 'export GTK_IM_MODULE=ibus' > .profile
+#echo 'export QT_IM_MODULE=ibus' >> .profile
+#echo 'export XMODIFIERS=@im=ibus' >> .profile
+#echo 'export PULSE_SERVER=localhost' >> .profile
+#echo 'export PATH=$PATH:'"$(cd $dest/utils && pwd):$(cd $dest/init && pwd)" >> .profile
+cp .zshrc.1 .config/tigervnc/xstartup
+cp .zshrc.1 .profile
+echo 'xrandr --output VNC-0 --mode 1920x1080' >> .config/tigervnc/xstartup
+echo 'openbox' >> .config/tigervnc/xstartup
+ln -sf .config/tigervnc/xstartup
+ln -sf .config/tigervnc/xstartup .xinitrc
+echo '#!/bin/sh' > $dest/eux-utils/safefox
+echo 'export MOZ_FAKE_NO_SANDBOX=1' >> $dest/eux-utils/safefox
+echo 'firefox $1' >> $dest/eux-utils/safefox
+chmod 755 $dest/eux-utils/safefox
+echo '#!/bin/sh' > $dest/eux-utils/showw
+echo 'rofi -show window &' >> $dest/eux-utils/showw
+chmod 755 $dest/eux-utils/showw
+echo '#!/bin/sh' > $dest/eux-utils/sdclock
+echo 'xclock -digital -update 10 &' >> $dest/eux-utils/sdclock
+chmod 755 $dest/eux-utils/sdclock
+chmod 744 .config/tigervnc/xstartup
+mkdir .vnc
+cp xstartup .vnc/xstartup
+#mkdir /usr/share/xsessions
+#echo '[Desktop Entry]' > /usr/share/xsessions/custom.desktop
+#echo 'Name=Custom' >> /usr/share/xsessions/custom.desktop
+#echo 'Exec=/home/'"$user"'/xstartup' >> /usr/share/xsessions/custom.desktop
+#echo 'Type=application' >> /usr/share/xsessions/custom.desktop
+cp $src/utils/swsh $dest/swsh
+echo "LD_PRELOAD=/system/lib64/libskcodec.so pulseaudio --load='module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1'" > $dest/eux-utils/sndsrv
+sed -i 1i"#\!/bin/sh" $dest/eux-utils/sndsrv
+chmod 755 $dest/eux-utils/sndsrv
+cd $dest/sve-eux-build
+git clone https://github.com/naver/d2codingfont
+git clone https://github.com/ohmyzsh/ohmyzsh
+mkdir $dest/.fonts
+unzip d2codingfont/D2Coding-Ver1.3.2*.zip
+cp D2Coding/*.ttf $dest/.fonts
+fc-cache
+cp $dest/.vimrc $dest/.vimrc.eux.b
+echo 'set nocp number autoindent tabstop=2 shiftwidth=2 expandtab printheader=""' > $dest/.vimrc
+#chown -R $user $dest/eux-utils
+chmod -R 755 $dest/sve-eux-build/ohmyzsh
+sed -ir 's,^.*zsh -l$,#&,' $dest/sve-eux-build/ohmyzsh/tools/install.sh
+sh $dest/sve-eux-build/ohmyzsh/tools/install.sh
+cat $dest/.zshrc.1 >> $dest/.zshrc
+sed -ir "$(cat $dest/.zshrc | grep -n ^ZSH_THEME | head -n1 | cut -d: -f-1)"'s,=.*\?$,="agnoster",' $dest/.zshrc
+exit

@@ -62,3 +62,7 @@ remotestor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_storage$rstoridx '$dq $pch
 @q86root $dq'sudo $q86e'$dq
 runpath echo "$dq\${csdb}$dq" $pchar grep $sq'^cfg_runpath '$sq $pchar ${pos}2- $pchar sed ${sq}'s,/ *\?$,,'$sq
 cmdname echo ${dq}\$csdb$dq $pchar grep ${sq}'^cfg_launch '$sq $pchar ${pos}2-
+
+#section X10: EUX variables
+eux_home ${sve_db}'^eux_home '${sve_nc}
+eux_sve_bin ${sve_db}'^eux_bin '${sve_nc} $pchar ${sve_a}.${sve_b}
