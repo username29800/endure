@@ -8,3 +8,4 @@ svt=$(cat build/svtest | sed '$d' | sed '$d')
 echo "$svt" >> build/svtest
 sed -i "$(($lm + 1)),\$s,=.*$,," build/svtest
 sed -i "$(($lm + 1)),\$s,^.*$,echo &="\""\$&"\""," build/svtest
+chmod -R 755 build/

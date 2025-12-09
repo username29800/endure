@@ -64,5 +64,5 @@ runpath echo "$dq\${csdb}$dq" $pchar grep $sq'^cfg_runpath '$sq $pchar ${pos}2- 
 cmdname echo ${dq}\$csdb$dq $pchar grep ${sq}'^cfg_launch '$sq $pchar ${pos}2-
 
 #section X10: EUX variables
-eux_home ${sve_db}'^eux_home '${sve_nc}
-eux_sve_bin ${sve_db}'^eux_bin '${sve_nc} $pchar ${sve_a}.${sve_b}
+eux_home ${sve_db}'^eux_home '${sve_nc} $pchar ${sve_a}'$(whoami)'${sve_b}
+eux_sve_bin ${sve_db}'^eux_bin '${sve_nc} $pchar ${sve_a}'$(pwd)'${sve_b}
