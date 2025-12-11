@@ -53,6 +53,6 @@ pkey_ridx=$(echo "$csdb" | grep "^r_pub.key_$entryname " | head -n1 | cut -d' ' 
 pkey_r=$(echo "$csdb" | grep "^com_pub${pkey_ridx} " | head -n1 | cut -d' ' -f2-)
 #!/bin/sh
 $xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "mkdir $svrex_remotestor"
-$xcp -i "$id" -O -P "$port" "$svrex_localstor/$svrex_exec" $user@$hostname:"$svrex_remotestor/$svrex_exec"
-$xcp -i "$id" -O -P "$port" "$dbfile" $user@$hostname:"$svrex_remotestor/$dbfile"
+$xcp -i "$id" -OCrp -P "$port" "$svrex_localstor/$svrex_exec" $user@$hostname:"$svrex_remotestor/$svrex_exec"
+$xcp -i "$id" -OCrp -P "$port" "$dbfile" $user@$hostname:"$svrex_remotestor/$dbfile"
 $xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "cd $svrex_remotestor && sh $svrex_exec $dbfile $entryname $svrex_args"
