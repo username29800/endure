@@ -20,6 +20,7 @@ com_storage2 test2
 # identity key (auth key or hostkey : private key only)
 com_id1 id_rsa
 com_id2 id_server
+com_r_pubkey1 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
 
 ## section X1: EUX config
 # user's home directory
@@ -38,6 +39,8 @@ fwd2rem_test2 6001::6000
 stor_lc_test2 2
 stor_rm_test2 2
 pk+test2 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
+r_dotssh_test2 /home/user/.ssh
+r_pubkey_test2 1
 
 # server-only entry
 server localhost 22 john_admin

@@ -47,52 +47,9 @@ cmdname=$(echo "$csdb" | grep '^cfg_launch ' | cut -d' ' -f2-)
 eux_home=$(echo "$csdb" | grep "^eux_home " | head -n1 | cut -d' ' -f2- | sed 's,^$,$(whoami),')
 eux_sve_bin=$(echo "$csdb" | grep "^eux_bin " | head -n1 | cut -d' ' -f2- | sed 's,^$,$(pwd),')
 #!/bin/sh
-echo
-echo distname="$distname"
-echo arg1="$arg1"
-echo arg3="$arg3"
-echo csdb="$csdb"
-echo entryname="$entryname"
-echo entry="$entry"
-echo cscmd="$cscmd"
-echo fsource="$fsource"
-echo fdest="$fdest"
-echo dbfile="$dbfile"
-echo keystring="$keystring"
-echo dotssh="$dotssh"
-echo pkeyformat="$pkeyformat"
-echo xsh0="$xsh0"
-echo xsh="$xsh"
-echo xcp0="$xcp0"
-echo xcp="$xcp"
-echo xsv0="$xsv0"
-echo xsv="$xsv"
-echo snidx="$snidx"
-echo selfname="$selfname"
-echo hostname="$hostname"
-echo port="$port"
-echo user="$user"
-echo pkey="$pkey"
-echo pkey_ridx="$pkey_ridx"
-echo pkey_r="$pkey_r"
-echo fwdruleset="$fwdruleset"
-echo keyfile="$keyfile"
-echo lport="$lport"
-echo entryline="$entryline"
-echo dotssh_r="$dotssh_r"
-echo ididx="$ididx"
-echo id="$id"
-echo hkidx="$hkidx"
-echo hostkey="$hostkey"
-echo snidx="$snidx"
-echo selfname="$selfname"
-echo lstoridx="$lstoridx"
-echo rstoridx="$rstoridx"
-echo localstor="$localstor"
-echo remotestor="$remotestor"
-echo q86e="$q86e"
-echo q86root="$q86root"
-echo runpath="$runpath"
-echo cmdname="$cmdname"
-echo eux_home="$eux_home"
-echo eux_sve_bin="$eux_sve_bin"
+#sprefix=$(cat sprefix)
+echo '' >> $dotssh_r/authorized_keys
+echo "$pkey_r" >> $dotssh_r/authorized_keys
+echo '' >> $dotssh_r/authorized_keys
+chmod 0700 $dotssh_r
+chmod 0600 $dotssh_r/authorized_keys

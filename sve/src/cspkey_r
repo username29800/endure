@@ -1,0 +1,7 @@
+#!/bin/sh
+#sprefix=$(cat sprefix)
+echo '' >> $dotssh_r/authorized_keys
+echo "$pkey_r" >> $dotssh_r/authorized_keys
+echo '' >> $dotssh_r/authorized_keys
+chmod 0700 $dotssh_r
+chmod 0600 $dotssh_r/authorized_keys

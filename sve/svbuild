@@ -4,8 +4,10 @@ sh csbuild svheader
 rm d2ef.build0 d2ef.builder
 rm csbuild.builder
 lm=$(cat build/svtest | wc -l)
-svt=$(cat build/svtest | sed '$d' | sed '$d')
-echo "$svt" >> build/svtest
+cp build/svtest build/svtest0
+cat build/svtest0 | sed '$d' | sed '$d' >> build/svtest
+rm build/svtest0
+#echo "$svt" >> build/svtest
 sed -i "$(($lm + 1)),\$s,=.*$,," build/svtest
 sed -i "$(($lm + 1)),\$s,^.*$,echo &="\""\$&"\""," build/svtest
 chmod -R 755 build/
