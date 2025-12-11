@@ -1,5 +1,5 @@
 #!/bin/sh
 #sprefix=$(cat sprefix)
-sed -i 's,^'"$pkey"',,' $sprefix/.ssh/authorized_keys
+sed -i 's,^'"$pkey"',,' $dotssh/authorized_keys
 sed -i 'N
 s,^\n,,' $dotssh/authorized_keys
