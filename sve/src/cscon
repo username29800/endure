@@ -1,2 +1,0 @@
-#!/bin/sh
-$xsh -YC -p "$port" -i "$id" $user@"$hostname"
