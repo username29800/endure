@@ -1,2 +1,2 @@
 #!/bin/sh
-sed -i "s,^com_pub$pkey_ridx $,&$keystring" $dbfile
+sed -i "s,^com_pub$pkey_ridx $,&$keystring," $dbfile
