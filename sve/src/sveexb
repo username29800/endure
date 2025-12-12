@@ -1,6 +1,6 @@
 #!/bin/sh
 sh d2efbuild ${extb_format} ${extb_header}
-sh exbuild ${extb_header}
+sh ${extb_bin}/exbuild ${extb_header}
 rm d2ef.build0 d2ef.builder
 rm csbuild.builder
 lm=$(cat ${extb_buildpath}/svtest | wc -l)

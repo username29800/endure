@@ -80,10 +80,3 @@ dotssh_r ${sve_db}'^r_dotssh_$entryname '${sve_nc}
 pkey_ridx ${sve_db}'^r_pub.key_$entryname '${sve_nc}
 pkey_r ${sve_db}'^com_pub${pkey_ridx} '${sve_nc}
 
-#section E10: sve extension builder config
-extb_format ${sve_db}'^e_format_$entryname '${sve_nc}
-extb_header ${sve_db}'^e_header_$entryname '${sve_nc}
-extb_buildpathidx ${sve_db}'^e_store.buildpath_$entryname '${sve_nc}
-extb_buildpath ${sve_db}'^com_store${extb_buildpathidx} '${sve_nc}
-extb_srcidx ${sve_db}'^e_store.buildsrc_$entryname '${sve_nc}
-extb_src ${sve_db}'^com_store${extb_srcidx} '${sve_nc}
