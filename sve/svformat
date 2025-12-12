@@ -81,4 +81,5 @@ svrex_dbfile ${sve_load}\$svrex_dbfile0${sve_c}\$dbfile${sve_b}
 dotssh_r ${sve_db}'^r_dotssh_$entryname '${sve_nc}
 pkey_ridx ${sve_db}'^r_pub.key_$entryname '${sve_nc}
 pkey_r ${sve_db}'^com_pub${pkey_ridx} '${sve_nc}
-
+eux_sve_bin_r ${sve_db}'r_eux_bin_$entryname '${sve_nc}
+eux_home_r ${sve_db}'^r_eux_home_$entryname '${sve_nc} $pchar ${sve_a}'$(whoami)'${sve_b}
