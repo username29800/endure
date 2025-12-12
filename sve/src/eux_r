@@ -1,6 +1,5 @@
 #!/bin/sh
 #user experience configuration utility - nonroot version
-$xcp -i "$id" -OCrp -P "$port" "$eux_sve_bin" $user@$hostname:"$svrex_remotestor/$eux_sve_bin_r"
 src=$svrex_remotestor/$eux_sve_bin_r
 dest=$eux_home_r
 mkdir $dest/eux-utils
