@@ -19,9 +19,9 @@ tr='tr -d \n'
 q86='qemu-system-x86 -machine q35 -cpu max -accel kvm'
 q86dev='-device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci'
 #fearg: fill empty args
-fearg="sed 's,^$,.,'"
-sve_a="sed 's,^$,"
-sve_b=",'"
+fearg="sed ${dq}s,^$,.,${dq}"
+sve_a="sed ${dq}s,^$,"
+sve_b=",${dq}"
 #ssto: Suppress STandard Output
 ssto=' > /dev/null'
 #se2o: StdErr To stdOut
