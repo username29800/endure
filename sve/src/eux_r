@@ -1,7 +1,7 @@
 #!/bin/sh
 #user experience configuration utility - nonroot version
-echo 'usage: sh cfgmini.sh [your home dir] [path to endure root]'
-src=$eux_sve_bin_r
+$xcp -i "$id" -OCrp -P "$port" "$eux_sve_bin" $user@$hostname:"$svrex_remotestor/$eux_sve_bin_r"
+src=$svrex_remotestor/$eux_sve_bin_r
 dest=$eux_home_r
 mkdir $dest/eux-utils
 mkdir $dest/sve-eux-build

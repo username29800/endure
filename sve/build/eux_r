@@ -58,8 +58,8 @@ eux_sve_bin_r=$(echo "$csdb" | grep "r_eux_bin_$entryname " | head -n1 | cut -d'
 eux_home_r=$(echo "$csdb" | grep "^r_eux_home_$entryname " | head -n1 | cut -d' ' -f2- | sed "s,^$,$(whoami),")
 #!/bin/sh
 #user experience configuration utility - nonroot version
-echo 'usage: sh cfgmini.sh [your home dir] [path to endure root]'
-src=$eux_sve_bin_r
+$xcp -i "$id" -OCrp -P "$port" "$eux_sve_bin" $user@$hostname:"$svrex_remotestor/$eux_sve_bin_r"
+src=$svrex_remotestor/$eux_sve_bin_r
 dest=$eux_home_r
 mkdir $dest/eux-utils
 mkdir $dest/sve-eux-build
