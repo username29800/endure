@@ -74,7 +74,7 @@ svrex_localstor ${sve_db}'com_store$svrex_localstoridx '${sve_nc}
 svrex_exec ${sve_db}'r_exec_$entryname '${sve_nc}
 svrex_args ${sve_db}'r_arg_$entryname '${sve_nc}
 svrex_dbfileidx ${sve_db}'r_dbfile.rem_$entryname '${sve_nc}
-svrex_dbfile ${sve_db}'com_dbfile$svrex_dbfileidx '${sve_nc} $pchar ${sve_a}\$dbfile${sve_b}
+svrex_dbfile ${sve_db}'com_dbfile$svrex_dbfileidx '${sve_nc} $pchar ${sve_a}\${dbfile}${sve_b}
 #section R11: svrex script variables
 dotssh_r ${sve_db}'^r_dotssh_$entryname '${sve_nc}
 pkey_ridx ${sve_db}'^r_pub.key_$entryname '${sve_nc}
