@@ -18,12 +18,17 @@ com_name3 127.0.0.1
 com_store1 test
 com_store2 test2
 com_store3 build
+com_store4 ext
+com_store5 src
 # identity key (auth key or hostkey : private key only)
 com_id1 id_rsa
 com_id2 id_server
 # remote-exec configuration
 # pubkey registration
 com_pub1 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
+# remote dbfiles
+com_dbfile1 db.test
+com_dbfile2 db.template
 
 ## section X1: EUX config
 # user's home directory
@@ -46,7 +51,12 @@ r_dotssh_test2 /home/user/.ssh
 r_pub.key_test2 1
 r_store.remotedata_test2 2
 r_store.localpath_test2 3
-r_exec_test2 cspkey
+r_exec_test2 cspkey_r
+r_dbfile.rem_test2 1
+e_store.buildpath_test2 4
+e_store.buildsrc_test2 5
+e_format_test2 svformat
+e_header_test2 extheader
 
 # server-only entry
 server localhost 22 john_admin

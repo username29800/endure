@@ -48,9 +48,17 @@ svrex_localstoridx=$(echo "$csdb" | grep "r_store.localpath_$entryname " | head 
 svrex_localstor=$(echo "$csdb" | grep "com_store$svrex_localstoridx " | head -n1 | cut -d' ' -f2-)
 svrex_exec=$(echo "$csdb" | grep "r_exec_$entryname " | head -n1 | cut -d' ' -f2-)
 svrex_args=$(echo "$csdb" | grep "r_arg_$entryname " | head -n1 | cut -d' ' -f2-)
+svrex_dbfileidx=$(echo "$csdb" | grep "r_dbfile.rem_$entryname " | head -n1 | cut -d' ' -f2-)
+svrex_dbfile=$(echo "$csdb" | grep "com_dbfile$svrex_dbfileidx " | head -n1 | cut -d' ' -f2- | sed 's,^$,$dbfile,')
 dotssh_r=$(echo "$csdb" | grep "^r_dotssh_$entryname " | head -n1 | cut -d' ' -f2-)
 pkey_ridx=$(echo "$csdb" | grep "^r_pub.key_$entryname " | head -n1 | cut -d' ' -f2-)
 pkey_r=$(echo "$csdb" | grep "^com_pub${pkey_ridx} " | head -n1 | cut -d' ' -f2-)
+extb_format=$(echo "$csdb" | grep "^e_format_$entryname " | head -n1 | cut -d' ' -f2-)
+extb_header=$(echo "$csdb" | grep "^e_header_$entryname " | head -n1 | cut -d' ' -f2-)
+extb_buildpathidx=$(echo "$csdb" | grep "^e_store.buildpath_$entryname " | head -n1 | cut -d' ' -f2-)
+extb_buildpath=$(echo "$csdb" | grep "^com_store${extb_buildpathidx} " | head -n1 | cut -d' ' -f2-)
+extb_srcidx=$(echo "$csdb" | grep "^e_store.buildsrc_$entryname " | head -n1 | cut -d' ' -f2-)
+extb_src=$(echo "$csdb" | grep "^com_store${extb_srcidx} " | head -n1 | cut -d' ' -f2-)
 #!/bin/sh
 #sprefix=$(cat sprefix)
 sed -i 's,^'"$pkey"',,' $dotssh/authorized_keys

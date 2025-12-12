@@ -1,0 +1,13 @@
+#!/bin/sh
+sh d2efbuild ${extb_format} ${extb_header}
+sh exbuild ${extb_header}
+rm d2ef.build0 d2ef.builder
+rm csbuild.builder
+lm=$(cat ${extb_buildpath}/svtest | wc -l)
+cp ${extb_buildpath}/svtest ${extb_buildpath}/svtest0
+cat ${extb_buildpath}/svtest0 | sed '$d' | sed '$d' >> ${extb_buildpath}/svtest
+rm ${extb_buildpath}/svtest0
+#echo "$svt" >> ${extb_buildpath}/svtest
+sed -i "$(($lm + 1)),\$s,=.*$,," ${extb_buildpath}/svtest
+sed -i "$(($lm + 1)),\$s,^.*$,echo &="\""\$&"\""," ${extb_buildpath}/svtest
+chmod -R 755 ${extb_buildpath}/
