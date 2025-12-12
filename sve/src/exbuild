@@ -1,7 +1,0 @@
-#!/bin/sh
-header=$1
-ls -l ${extb_src} | sed 1d | sed 's,^.* ,,' > csbuild.builder
-rm ${extb_buildpath}/*
-sed -i 's,^.*$,cat '$header' ${extb_src}/& >> ${extb_buildpath}/&,' csbuild.builder
-sh csbuild.builder
-chmod -R 755 ${extb_buildpath}/
