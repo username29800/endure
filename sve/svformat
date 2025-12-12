@@ -70,7 +70,7 @@ eux_sve_bin ${sve_db}'^eux_bin '${sve_nc} $pchar ${sve_a}'$(pwd)'${sve_b}
 svrex_remotestoridx ${sve_db}'r_store.remotedata_$entryname '${sve_nc}
 svrex_remotestor ${sve_db}'com_store$svrex_remotestoridx '${sve_nc} $pchar ${sve_a}\$remotestor${sve_b}
 svrex_localstoridx ${sve_db}'r_store.localpath_$entryname '${sve_nc}
-svrex_localstord ${sve_db}'com_store$svrex_localstoridx '${sve_nc} $pchar cat $pchar ${sve_a}\$eux_bin${sve_b}
+svrex_localstor ${sve_db}'com_store$svrex_localstoridx '${sve_nc} $pchar cat $pchar ${sve_a}\$eux_bin${sve_b}
 #svrex_localstor ${sve_load}\$svrex_localstord${sve_c}\$
 svrex_exec ${sve_db}'^r_exec_$entryname '${sve_nc}
 svrex_args ${sve_db}'^r_arg_$entryname '${sve_nc}
