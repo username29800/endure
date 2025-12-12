@@ -5,9 +5,9 @@
 cfg_dotssh /home/user/.ssh
 cfg_pubkeyis pk+
 # ssh executable config (optional)
-cfg_ssh ssh
-cfg_scp scp
-cfg_sshd /usr/sbin/sshd
+#cfg_ssh ssh
+#cfg_scp scp
+#cfg_sshd /usr/sbin/sshd
 
 ## section 2: components
 # selfname(client hostname for remote forwarding)
@@ -52,11 +52,7 @@ r_pub.key_test2 1
 r_store.remotedata_test2 2
 r_store.localpath_test2 3
 r_exec_test2 cspkey_r
-r_dbfile.rem_test2 1
-e_store.buildpath_test2 4
-e_store.buildsrc_test2 5
-e_format_test2 svformat
-e_header_test2 extheader
+#r_dbfile.rem_test2 1
 
 # server-only entry
 server localhost 22 john_admin
