@@ -9,7 +9,7 @@ pchar=\|
 redir=\>
 bksh=\\
 apnd='>>'
-nwln='\\n'
+nwln=\\n
 
 #section 2: utility presets
 pos='cut -d'${sq}' '${sq}' -f'
