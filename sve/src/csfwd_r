@@ -1,0 +1,3 @@
+#!/bin/sh
+#fwdrule="$3"
+$xsh -YC -p "$port" $rxchfwd -i "$id" $user@"$hostname"

@@ -57,7 +57,7 @@ pkey_r=$(echo "$csdb" | grep "^com_pub${pkey_ridx} " | head -n1 | cut -d' ' -f2-
 eux_sve_bin_r=$(echo "$csdb" | grep "r_eux_bin_$entryname " | head -n1 | cut -d' ' -f2-)
 eux_home_r=$(echo "$csdb" | grep "^r_eux_home_$entryname " | head -n1 | cut -d' ' -f2- | sed "s,^$,$(whoami),")
 #!/bin/sh
-#format: pk_alias pubkey
-#akey=$(cat $3 | sed 's,^,pk_'$entryname' ,')
-#line=$(echo "$csdb" | grep -n '^'$entryname' ' | cut -d: -f1)
-sed -i $entryline'a'"${pkeyformat}${entryname} $keystring" $dbfile
+$xsh -YC -p "$port" $rxchfwd -i "$id" $user@"$hostname" -t "mkdir $svrex_remotestor"
+$xcp -i "$id" -OCrp -P "$port" "$svrex_localstor/$svrex_exec" $user@$hostname:"$svrex_remotestor/$svrex_exec"
+$xcp -i "$id" -OCrp -P "$port" "$svrex_dbfile" $user@$hostname:"$svrex_remotestor/$svrex_dbfile"
+$xsh -YC -p "$port" $rxchfwd -i "$id" $user@"$hostname" -t "cd $svrex_remotestor && sh $svrex_exec $svrex_args"
