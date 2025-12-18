@@ -1,5 +1,6 @@
 #!/bin/sh
 #sprefix=$(cat sprefix)
+mkdir -p $dotssh_r
 echo '' >> $dotssh_r/authorized_keys
 echo "$pkey_r" >> $dotssh_r/authorized_keys
 echo '' >> $dotssh_r/authorized_keys

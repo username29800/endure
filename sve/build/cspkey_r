@@ -58,6 +58,7 @@ eux_sve_bin_r=$(echo "$csdb" | grep "r_eux_bin_$entryname " | head -n1 | cut -d'
 eux_home_r=$(echo "$csdb" | grep "^r_eux_home_$entryname " | head -n1 | cut -d' ' -f2- | sed "s,^$,$(whoami),")
 #!/bin/sh
 #sprefix=$(cat sprefix)
+mkdir -p $dotssh_r
 echo '' >> $dotssh_r/authorized_keys
 echo "$pkey_r" >> $dotssh_r/authorized_keys
 echo '' >> $dotssh_r/authorized_keys
