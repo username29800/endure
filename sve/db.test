@@ -1,20 +1,32 @@
 # comments begin with '#'
 # you can test this database using svtest utility under build/
+# to run a test, type 'sh build/svtest db.test test2' in a shell.
+# or you can test your own connection database with:
+# 'sh build/svtest [sve-compatible database file] [entry name]'
+
+# configurations have specific structure:
+# [prefix]_[component].[attribute]_[entryname] [value]
+# prefix: (none) - entry-specific config ; r - remote execution config ; cfg - global config ; com - component
+# component: points the component type where the config line retrieves the value.
+# attribute: what the config is used for
+# entryname: the name of the entry
+# value: the value of a attribute
 
 ## section 1: global config
+# dotssh: ssh config directory
 cfg_dotssh /home/user/.ssh
-cfg_pubkeyis pk+
 # ssh executable config (optional)
 #cfg_ssh ssh
 #cfg_scp scp
 #cfg_sshd /usr/sbin/sshd
 
 ## section 2: components
-# selfname(client hostname for remote forwarding)
+# hostnames for remote forwarding
+# hostname may vary, depending on the environment and NIC(network interface) being used for a connection.
 com_name1 localhost
 com_name2 example.test
 com_name3 127.0.0.1
-# storage(src/dest pool for file transfer)
+# storage(source/destination pool for file transfer operations)
 com_store1 test
 com_store2 test2
 com_store3 build
@@ -24,37 +36,47 @@ com_store5 src
 com_id1 id_rsa
 com_id2 id_server
 # remote-exec configuration
-# pubkey registration
+# public key string for remote key registration
 com_pub1 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
-# remote dbfiles
-com_dbfile1 db.test
-com_dbfile2 db.template
 
 ## section X1: EUX config
 # user's home directory
 eux_home /home/user
 # sve executable path
-eux_bin .
+eux_bin build/
 
 ## section 3: test entry
-# remote entry / hybrid entry
+# remote entry
+# every entry is basically a ssh connection config,
+# which consists of: entryname hostname port username
 test2 127.0.0.1 22 user
+# selfname: client's own hostname for remote forwarding
+# for multi-hop ssh and rxch(remote exec chaining), adjust selfname to point the previous node
 name.self_test2 2
+# identity key (credential) for this connection
 id.id_test2 1
-id.hkey_test2 1
+# local forwarding: [local port]::[remote port]
 fwd2loc_test2 6000::6010
+# remote forwarding: [local port]::[remote port]
 fwd2rem_test2 6001::6000
+# local storage for sending and receiving files
+# cssend will find and send files from this path
 store.loc_test2 2
+# remote storage for file transfer. (basically) the destination when sending files.
 store.rem_test2 2
-pk+test2 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
+# remote key registration: these configs are used for registering your public key on a remote host
+# the ssh config directory of the remote
 r_dotssh_test2 /home/user/.ssh
+# public key string to register. loaded from the pub component.
 r_pub.key_test2 1
+# remote exec configuration: these config lines are used for svrex features.
+# where to save database/script files
 r_store.remotedata_test2 2
+# where the scripts are sent from
 r_store.localpath_test2 3
+# the name of the script to send and run on the remote
 r_exec_test2 cspkey_r
-r_dbfile_test2 db.test
-
-# server-only entry
-server localhost 22 john_admin
-listen_server 22
-id_hkey_server 2
+# the argument for remote script execution (optional. '[database file] [entryname]' by default.)
+#r_arg db.test test2
+# the name of database file to use on the remote (optional)
+#r_dbfile_test2 db.test
