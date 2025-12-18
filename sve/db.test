@@ -77,6 +77,6 @@ r_store.localpath_test2 3
 # the name of the script to send and run on the remote
 r_exec_test2 cspkey_r
 # the argument for remote script execution (optional. '[database file] [entryname]' by default.)
-#r_arg db.test test2
+#r_arg_test2 db.test test2
 # the name of database file to use on the remote (optional)
 #r_dbfile_test2 db.test

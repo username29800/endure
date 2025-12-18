@@ -1,4 +1,5 @@
-echo "usage: newconf [entryname] [db filename]"
+echo "## section 3: test entry" >> $2
+echo "$1 hostname portnumber username" >> $2
 echo "name.self_$1" >> $2
 echo "id.id_$1" >> $2
 echo "fwd2loc_$1" >> $2
@@ -10,3 +11,5 @@ echo "r_pub.key_$1" >> $2
 echo "r_store.remotedata_$1" >> $2
 echo "r_store.localpath_$1" >> $2
 echo "r_exec_$1" >> $2
+echo "#r_arg_$1" >> $2
+echo "#r_dbfile_$1" >> $2
