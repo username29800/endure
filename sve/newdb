@@ -1,0 +1,20 @@
+echo "usage: newdb [entryname] [db filename]"
+echo "cfg_dotssh" > $2
+echo "com_name1" >> $2
+echo "com_store1" >> $2
+echo "com_id1" >> $2
+echo "com_pub1" >> $2
+echo "eux_home" >> $2
+echo "eux_bin" >> $2
+echo "$1 localhost 22 user" >> $2
+echo "name.self_$1" >> $2
+echo "id.id_$1" >> $2
+echo "fwd2loc_$1" >> $2
+echo "fwd2rem_$1" >> $2
+echo "store.loc_$1" >> $2
+echo "store.rem_$1" >> $2
+echo "r_dotssh_$1" >> $2
+echo "r_pub.key_$1" >> $2
+echo "r_store.remotedata_$1" >> $2
+echo "r_store.localpath_$1" >> $2
+echo "r_exec_$1" >> $2

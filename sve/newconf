@@ -1,0 +1,12 @@
+echo "usage: newconf [entryname] [db filename]"
+echo "name.self_$1" >> $2
+echo "id.id_$1" >> $2
+echo "fwd2loc_$1" >> $2
+echo "fwd2rem_$1" >> $2
+echo "store.loc_$1" >> $2
+echo "store.rem_$1" >> $2
+echo "r_dotssh_$1" >> $2
+echo "r_pub.key_$1" >> $2
+echo "r_store.remotedata_$1" >> $2
+echo "r_store.localpath_$1" >> $2
+echo "r_exec_$1" >> $2
