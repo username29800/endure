@@ -1,0 +1,12 @@
+#!/bin/sh
+mount --bind /dev $ct_system/dev
+mount --bind $ct_system/mem $ct_system/dev/shm
+mount --bind $ct_system/rmem $ct_system/run/shm
+mount --bind /proc proc
+mount --bind /sys sys
+chroot . /bin/su -c "$ct_initpath/initptyc $ct_user $(echo $ct_exec | sed 's, ,\\ ,g')" root
+umount $ct_system/dev
+umount $ct_system/dev/shm
+umount $ct_system/run/shm
+umount proc
+umount sys
