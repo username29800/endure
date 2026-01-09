@@ -90,7 +90,7 @@ eux_home_r ${sve_db}'^r_eux_home_$entryname '${sve_nc} $pchar ${sve_a}'$(whoami)
 ct_pathidx0 ${sve_db}'^c_ct.sabre.origin_$entryname '${sve_nc}
 ct_pathidx ${sve_load}\$ct_pathidx0${sve_c}0${sve_b}
 ct_path0 ${sve_db}'^com_ct.sabre$ct_pathidx '${sve_np}
-ct_path ${sve_load}\$ct_path${sve_c}build${sve_b}
+ct_path ${sve_load}\$ct_path0${sve_c}build${sve_b}
 ct_sysidx ${sve_db}'^c_store.ct.root_$entryname '${sve_nc}
 ct_system ${sve_db}'^com_ct.sabre$ct_sysidx '${sve_np}
 ct_user ${sve_db}'^c_user_$entryname '${sve_nc}
