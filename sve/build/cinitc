@@ -71,14 +71,15 @@ ct_wdidx=$(echo "$csdb" | grep "^c_store.ct.initwd_$entryname " | head -n1 | cut
 ct_workdir0=$(echo "$csdb" | grep "^com_ct.sabre$ct_initidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
-mount --bind /dev $ct_system/dev
-mount --bind $ct_system/mem $ct_system/dev/shm
-mount --bind $ct_system/rmem $ct_system/run/shm
+cd $ct_system
+mount --bind /dev dev
+mount --bind mem dev/shm
+mount --bind rmem run/shm
 mount --bind /proc proc
 mount --bind /sys sys
 chroot . /bin/su -c "$ct_initpath/initptyc $ct_user $(echo $ct_exec | sed 's, ,\\ ,g')" root
-umount $ct_system/dev
-umount $ct_system/dev/shm
-umount $ct_system/run/shm
+umount dev
+umount dev/shm
+umount run/shm
 umount proc
 umount sys
