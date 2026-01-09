@@ -92,7 +92,7 @@ ct_pathidx ${sve_load}\$ct_pathidx0${sve_c}0${sve_b}
 ct_path0 ${sve_db}'^com_ct.sabre$ct_pathidx '${sve_np}
 ct_path ${sve_load}\$ct_path0${sve_c}build${sve_b}
 ct_sysidx ${sve_db}'^c_store.ct.root_$entryname '${sve_nc}
-ct_system ${sve_db}'^com_ct.sabre$ct_sysidx '${sve_np}
+ct_system ${sve_db}'^com_store.ct$ct_sysidx '${sve_np}
 ct_user ${sve_db}'^c_user_$entryname '${sve_nc}
 ct_initidx ${sve_db}'^c_store.ct.init_$entryname '${sve_nc}
 ct_initpath0 ${sve_db}'^com_ct.sabre$ct_initidx '${sve_np}
