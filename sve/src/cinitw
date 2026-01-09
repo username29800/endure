@@ -5,7 +5,7 @@ mount --bind /dev dev
 #mount --bind rmem run/shm
 mount --bind /proc proc
 mount --bind /sys sys
-chroot . /bin/su -c "sh $ct_initpath/initptyc $ct_user $(echo cd $ct_workdir && $ct_exec | sed 's, ,\\ ,g')" root
+chroot . /bin/su -c "sh $ct_initpath/initptyc $ct_user "\""cd $ct_workdir && $ct_exec"\" root
 umount dev
 #umount dev/shm
 #umount run/shm

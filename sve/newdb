@@ -33,7 +33,7 @@ echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
 echo "r_eux_home_$1 ~/" >> $2
 echo "#r_eux_bin_$1" >> $2
-echo "com_ct.sabre1 build/" >> $2
+echo "com_ct.sabre1 ct_init/" >> $2
 echo "com_store.ct1 system/" >> $2
 echo "com_store.ct2 /" >> $2
 echo "com_store.ct3 /" >> $2
