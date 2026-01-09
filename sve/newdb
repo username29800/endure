@@ -6,7 +6,9 @@ echo "#cfg_sshd /usr/sbin/sshd" >> $2
 echo "" >> $2
 echo "## section 2: components" >> $2
 echo "com_name1 127.0.0.1" >> $2
-echo "com_store1 data" >> $2
+echo "com_store1 localdata" >> $2
+echo "com_store2 remotedata" >> $2
+echo "com_store3 build/" >> $2
 echo "com_id1 keys/id.rsa" >> $2
 echo "com_pub1" >> $2
 echo "" >> $2
