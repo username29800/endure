@@ -1,13 +1,13 @@
 #!/bin/sh
 cd $ct_system
 mount --bind /dev dev
-mount --bind mem dev/shm
-mount --bind rmem run/shm
+#mount --bind mem dev/shm
+#mount --bind rmem run/shm
 mount --bind /proc proc
 mount --bind /sys sys
 chroot . /bin/su -c "$ct_initpath/initptyc $ct_user $(echo $ct_exec | sed 's, ,\\ ,g')" root
 umount dev
-umount dev/shm
-umount run/shm
+#umount dev/shm
+#umount run/shm
 umount proc
 umount sys
