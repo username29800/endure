@@ -29,6 +29,8 @@ echo "r_store.localpath_$1" >> $2
 echo "r_exec_$1" >> $2
 echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
+echo "r_eux_home_$1" >> $2
+echo "#r_eux_bin_$1" >> $2
 echo "com_ct.sabre1" >> $2
 echo "com_store.ct1" >> $2
 echo "com_store.ct2" >> $2

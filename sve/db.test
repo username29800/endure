@@ -80,6 +80,10 @@ r_exec_test2 cspkey_r
 #r_arg_test2 db.test test2
 # the name of database file to use on the remote (optional)
 #r_dbfile_test2 db.test
+# path to the EUX installation target; target user's home dir
+r_eux_home_test2 /home/user
+# the eux script directory on remote
+r_eux_bin_test2 /home/user/endure/sve/build
 
 ## section c1: container (ct-sabre) config
 com_ct.sabre1 build
