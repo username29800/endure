@@ -1,10 +1,10 @@
 #section 10: distribution metadata
-@distname sve-integration-test
-@distversion sve-integrated-2025.12a
+@distname sve-ct-integration-test
+@distversion sve-container-2026.1a
 
 #section 20: argument preprocessor
-arg1 echo \$1 $pchar $fearg
-arg3 echo \$3 $pchar $fearg
+arg1 echo ${dq}\$1$dq $pchar $fearg
+arg3 echo ${dq}\$3$dq $pchar $fearg
 
 #section 30: parser fundamentals
 csdb cat \$arg1 $pchar grep $sq'^[^#]'$sq
@@ -86,4 +86,18 @@ pkey_r ${sve_db}'^com_pub${pkey_ridx} '${sve_nc}
 eux_sve_bin_r ${sve_db}'r_eux_bin_$entryname '${sve_nc}
 eux_home_r ${sve_db}'^r_eux_home_$entryname '${sve_nc} $pchar ${sve_a}'$(whoami)'${sve_b}
 
-#section C10: 
+#section C10: ct-sabre integration
+ct_pathidx0 ${sve_db}'^c_ct.sabre.origin_$entryname '${sve_nc}
+ct_pathidx ${sve_load}\$ct_pathidx0${sve_c}0${sve_b}
+ct_path0 ${sve_db}'^com_ct.sabre$ct_pathidx '${sve_np}
+ct_path ${sve_load}\$ct_path${sve_c}build${sve_b}
+ct_sysidx ${sve_db}'^c_store.ct.root_$entryname '${sve_nc}
+ct_system ${sve_db}'^com_ct.sabre$ct_sysidx '${sve_np}
+ct_user ${sve_db}'^c_user_$entryname '${sve_nc}
+ct_initidx ${sve_db}'^c_store.ct.init_$entryname '${sve_nc}
+ct_initpath0 ${sve_db}'^com_ct.sabre$ct_initidx '${sve_np}
+ct_initpath ${sve_load}\$ct_initpath0${sve_c}${sve_b}
+ct_exec ${sve_db}'^c_run_$entryname '${sve_nc}
+ct_wdidx ${sve_db}'^c_store.ct.initwd_$entryname '${sve_nc}
+ct_workdir0 ${sve_db}'^com_ct.sabre$ct_initidx '${sve_np}
+ct_workdir ${sve_load}\$ct_workdir0${sve_c}/${sve_b}

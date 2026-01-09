@@ -71,7 +71,11 @@ ct_wdidx=$(echo "$csdb" | grep "^c_store.ct.initwd_$entryname " | head -n1 | cut
 ct_workdir0=$(echo "$csdb" | grep "^com_ct.sabre$ct_initidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
-$xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "mkdir -p $svrex_remotestor"
-$xcp -i "$id" -OCrp -P "$port" "$svrex_localstor/$svrex_exec" $user@$hostname:"$svrex_remotestor/$svrex_exec"
-$xcp -i "$id" -OCrp -P "$port" "$svrex_dbfile" $user@$hostname:"$svrex_remotestor/$svrex_dbfile"
-$xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "cd $svrex_remotestor && sh $svrex_exec $svrex_args"
+# sabre-containers extension
+#prefix=$(cat prefix)
+#rfspath=$1
+mkdir -p ${ct_system}/system
+#cp -r ext-alpine* inst-alpine* pkg-alpine* init sysind.sh usrconf.sh cfgnoroot.sh cfgmini.sh utils cs-sabre tools $prefix/system/
+cp -a ${ct_path}/initpty ${ct_system}/initpty
+cd ${ct_system}/system
+mkdir mem rmem

@@ -29,3 +29,13 @@ echo "r_store.localpath_$1" >> $2
 echo "r_exec_$1" >> $2
 echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
+echo "com_ct.sabre1" >> $2
+echo "com_store.ct1" >> $2
+echo "com_store.ct2" >> $2
+echo "com_store.ct3" >> $2
+echo "c_ct.sabre.origin_$1" >> $2
+echo "c_store.ct.root_$1" >> $2
+echo "c_user_$1" >> $2
+echo "c_store.ct.init_$1" >> $2
+echo "c_run_$1" >> $2
+echo "c_store.ct.initwd_$1" >> $2

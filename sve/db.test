@@ -80,3 +80,21 @@ r_exec_test2 cspkey_r
 #r_arg_test2 db.test test2
 # the name of database file to use on the remote (optional)
 #r_dbfile_test2 db.test
+
+## section c1: container (ct-sabre) config
+com_ct.sabre1 build
+com_store.ct1 test2c
+com_store.ct2 /
+com_store.ct3 /
+# the location of ct-sabre scripts
+c_ct.sabre.origin_test2 1
+# the location of rootfs/newroot
+c_store.ct.root_test2 2
+# the location of init script inside newroot
+c_store.ct.init_test2 2
+# initial working directory
+c_store.ct.initwd_test2 3
+# default user
+c_user_test2 user
+# default command
+c_run_test2 bash

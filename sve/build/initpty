@@ -70,8 +70,8 @@ ct_exec=$(echo "$csdb" | grep "^c_run_$entryname " | head -n1 | cut -d' ' -f2-)
 ct_wdidx=$(echo "$csdb" | grep "^c_store.ct.initwd_$entryname " | head -n1 | cut -d' ' -f2-)
 ct_workdir0=$(echo "$csdb" | grep "^com_ct.sabre$ct_initidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
-#!/bin/sh
-$xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "mkdir -p $svrex_remotestor"
-$xcp -i "$id" -OCrp -P "$port" "$svrex_localstor/$svrex_exec" $user@$hostname:"$svrex_remotestor/$svrex_exec"
-$xcp -i "$id" -OCrp -P "$port" "$svrex_dbfile" $user@$hostname:"$svrex_remotestor/$svrex_dbfile"
-$xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "cd $svrex_remotestor && sh $svrex_exec $svrex_args"
+#\!/bin/sh
+"$2"mount -t devpts devpts /dev/pts
+chmod 666 /dev/pts/ptmx
+su -l "$1"
+"$2"umount /dev/pts

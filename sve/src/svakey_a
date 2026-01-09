@@ -1,0 +1,2 @@
+#!/bin/sh
+sed -i "s,^com_pub$2 $,&$keystring," $dbfile
