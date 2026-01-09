@@ -1,43 +1,43 @@
 echo "## section 1: global config" > $2
-echo "cfg_dotssh" >> $2
+echo "cfg_dotssh ~/.ssh" >> $2
 echo "#cfg_ssh ssh" >> $2
 echo "#cfg_scp scp" >> $2
 echo "#cfg_sshd /usr/sbin/sshd" >> $2
 echo "" >> $2
 echo "## section 2: components" >> $2
-echo "com_name1" >> $2
-echo "com_store1" >> $2
-echo "com_id1" >> $2
+echo "com_name1 127.0.0.1" >> $2
+echo "com_store1 data" >> $2
+echo "com_id1 keys/id.rsa" >> $2
 echo "com_pub1" >> $2
 echo "" >> $2
 echo "## section X1: EUX config" >> $2
-echo "eux_home" >> $2
+echo "eux_home ~/" >> $2
 echo "eux_bin build/" >> $2
 echo "" >> $2
 echo "## section 3: test entry" >> $2
 echo "$1 hostname portnumber username" >> $2
-echo "name.self_$1" >> $2
-echo "id.id_$1" >> $2
-echo "fwd2loc_$1" >> $2
-echo "fwd2rem_$1" >> $2
-echo "store.loc_$1" >> $2
-echo "store.rem_$1" >> $2
-echo "r_dotssh_$1" >> $2
-echo "r_pub.key_$1" >> $2
-echo "r_store.remotedata_$1" >> $2
-echo "r_store.localpath_$1" >> $2
+echo "name.self_$1 1" >> $2
+echo "id.id_$1 1" >> $2
+echo "fwd2loc_$1 8080::8080" >> $2
+echo "fwd2rem_$1 6000::6000" >> $2
+echo "store.loc_$1 1" >> $2
+echo "store.rem_$1 2" >> $2
+echo "r_dotssh_$1 ~/.ssh" >> $2
+echo "r_pub.key_$1 1" >> $2
+echo "r_store.remotedata_$1 2" >> $2
+echo "r_store.localpath_$1 3" >> $2
 echo "r_exec_$1" >> $2
 echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
-echo "r_eux_home_$1" >> $2
+echo "r_eux_home_$1 ~/" >> $2
 echo "#r_eux_bin_$1" >> $2
-echo "com_ct.sabre1" >> $2
-echo "com_store.ct1" >> $2
-echo "com_store.ct2" >> $2
-echo "com_store.ct3" >> $2
-echo "c_ct.sabre.origin_$1" >> $2
-echo "c_store.ct.root_$1" >> $2
+echo "com_ct.sabre1 build/" >> $2
+echo "com_store.ct1 system/" >> $2
+echo "com_store.ct2 /" >> $2
+echo "com_store.ct3 /" >> $2
+echo "c_ct.sabre.origin_$1 1" >> $2
+echo "c_store.ct.root_$1 1" >> $2
 echo "c_user_$1" >> $2
-echo "c_store.ct.init_$1" >> $2
-echo "c_run_$1" >> $2
-echo "c_store.ct.initwd_$1" >> $2
+echo "c_store.ct.init_$1 2" >> $2
+echo "c_run_$1 sh" >> $2
+echo "c_store.ct.initwd_$1 3" >> $2
