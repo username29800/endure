@@ -99,5 +99,5 @@ ct_initpath0 ${sve_db}'^com_ct.sabre$ct_initidx '${sve_np}
 ct_initpath ${sve_load}\$ct_initpath0${sve_c}${sve_b}
 ct_exec ${sve_db}'^c_run_$entryname '${sve_nc}
 ct_wdidx ${sve_db}'^c_store.ct.initwd_$entryname '${sve_nc}
-ct_workdir0 ${sve_db}'^com_ct.sabre$ct_initidx '${sve_np}
+ct_workdir0 ${sve_db}'^com_store.ct$ct_wdidx '${sve_np}
 ct_workdir ${sve_load}\$ct_workdir0${sve_c}/${sve_b}

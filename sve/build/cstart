@@ -68,7 +68,7 @@ ct_initpath0=$(echo "$csdb" | grep "^com_ct.sabre$ct_initidx " | head -n1 | cut 
 ct_initpath=$(echo "$ct_initpath0" | sed "s,^$,,")
 ct_exec=$(echo "$csdb" | grep "^c_run_$entryname " | head -n1 | cut -d' ' -f2-)
 ct_wdidx=$(echo "$csdb" | grep "^c_store.ct.initwd_$entryname " | head -n1 | cut -d' ' -f2-)
-ct_workdir0=$(echo "$csdb" | grep "^com_ct.sabre$ct_initidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
+ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 #prefix=$(cat prefix | sed 's,/$,,')
