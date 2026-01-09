@@ -76,6 +76,6 @@ ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #rfspath=$1
 mkdir -p ${ct_system}/system
 #cp -r ext-alpine* inst-alpine* pkg-alpine* init sysind.sh usrconf.sh cfgnoroot.sh cfgmini.sh utils cs-sabre tools $prefix/system/
-cp -a ${ct_path}/initpty ${ct_system}/initpty
+cp -a ${ct_path}/initptyc ${ct_system}/initptyc
 cd ${ct_system}/system
 mkdir mem rmem
