@@ -6,7 +6,9 @@ echo "name.self_$1 1" >> $2
 echo "id.id_$1 1" >> $2
 echo "" >> $2
 echo "#fwd2loc_$1 8080::8080" >> $2
+echo "#fwd2rem_$1 22::8122" >> $2
 echo "#fwd2rem_$1 6000::6000" >> $2
+echo "#fwd2rem_$1 6001::6001" >> $2
 echo "" >> $2
 echo "store.loc_$1 1" >> $2
 echo "store.rem_$1 2" >> $2
@@ -24,11 +26,3 @@ echo "" >> $2
 echo "r_eux_home_$1 /home/user" >> $2
 echo "#r_eux_bin_$1" >> $2
 echo "" >> $2
-echo "c_ct.sabre.origin_$1 1" >> $2
-echo "c_store.ct.root_$1 1" >> $2
-echo "" >> $2
-echo "c_store.ct.init_$1 2" >> $2
-echo "c_store.ct.initwd_$1 3" >> $2
-echo "" >> $2
-echo "c_user_$1" >> $2
-echo "c_run_$1 sh" >> $2
