@@ -73,7 +73,7 @@ ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 #user experience configuration utility - nonroot version
 echo 'usage: sh cfgmini.sh [your home dir] [path to endure root]'
-src=$eux_sve_bin
+src="$(cd $eux_sve_bin && pwd)"
 dest=$eux_home
 mkdir $dest/eux-utils
 mkdir $dest/sve-eux-build
@@ -91,7 +91,7 @@ echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
 echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
 echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
 echo 'export PULSE_SERVER=localhost' >> .zshrc.1
-echo 'export PATH=$PATH:'"$(cd $src && pwd)" >> .zshrc.1
+echo 'export PATH=$PATH:'"$src" >> .zshrc.1
 mv $dest/.profile $dest/.profile.eux.b
 #echo 'export GTK_IM_MODULE=ibus' > .profile
 #echo 'export QT_IM_MODULE=ibus' >> .profile
