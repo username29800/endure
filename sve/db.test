@@ -42,6 +42,8 @@ com_pub1 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
 ## section X1: EUX config
 # user's home directory
 eux_home /home/user
+# username
+eux_user user
 # sve executable path
 eux_bin build/
 

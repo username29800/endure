@@ -63,8 +63,11 @@ remotestor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_store$rstoridx '$dq $pchar
 @q86root $dq'sudo $q86e'$dq
 
 #section X10: EUX variables
-eux_home ${sve_db}'^eux_home '${sve_nc} $pchar ${sve_a}'$(whoami)'${sve_b}
-eux_sve_bin ${sve_db}'^eux_bin '${sve_nc} $pchar ${sve_a}'$(pwd)'${sve_b}
+eux_home0 ${sve_db}'^eux_home '${sve_nc}
+eux_home ${sve_load}'$eux_home0'${sve_c}'$(whoami)'${sve_b}
+eux_user0 ${sve_db}'^eux_user '${sve_nc}
+eux_user ${sve_load}'$eux_user0'${sve_c}'$(whoami)'${sve_b}
+eux_sve_bin ${sve_db}'^eux_bin '${sve_nc}
 
 #section R10: svrex fundamentals
 #svrex storage
