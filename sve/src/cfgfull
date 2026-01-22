@@ -1,8 +1,7 @@
 #!/bin/sh
 #user experience configuration utility - root version, full setup
-echo 'usage: sh cfgfull [your home dir] [path to endure root]'
 src="$(cd $eux_sve_bin && pwd)"
-dest=$eux_home
+dest="$(cd $eux_home && pwd)"
 user=$eux_user
 mkdir $dest/eux-utils
 mkdir $dest/sve-eux-build
@@ -19,8 +18,9 @@ mkdir -p .config/tigervnc
 echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
 echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
 echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
-echo 'export PULSE_SERVER=localhost' >> .zshrc.1
-echo 'export PATH=$PATH:'"$src" >> .zshrc.1
+echo '# uncomment this line for pulseaudio/pipewire forwarding' >> .zshrc.1
+echo '#export PULSE_SERVER=localhost' >> .zshrc.1
+echo 'export PATH=$PATH:'"$src:$dest/eux-utils" >> .zshrc.1
 echo '# for wayland sessions with ibus (ibus wayland)' >> .zshrc.1
 echo '#unset GTK_IM_MODULE' >> .zshrc.1
 echo '#unset QT_IM_MODULE' >> .zshrc.1

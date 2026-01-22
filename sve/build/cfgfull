@@ -24,7 +24,7 @@ hostname=$(echo $entry | cut -d' ' -f2)
 port=$(echo $entry | cut -d' ' -f3)
 user=$(echo $entry | cut -d' ' -f4)
 pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
-fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr "\n" ' ' | sed 's, $,,')
+fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr "\\n" ' ' | sed 's, $,,')
 keyfile=$arg3
 lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
@@ -75,9 +75,8 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 #user experience configuration utility - root version, full setup
-echo 'usage: sh cfgfull [your home dir] [path to endure root]'
 src="$(cd $eux_sve_bin && pwd)"
-dest=$eux_home
+dest="$(cd $eux_home && pwd)"
 user=$eux_user
 mkdir $dest/eux-utils
 mkdir $dest/sve-eux-build
@@ -94,8 +93,9 @@ mkdir -p .config/tigervnc
 echo 'export GTK_IM_MODULE=ibus' > .zshrc.1
 echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
 echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
-echo 'export PULSE_SERVER=localhost' >> .zshrc.1
-echo 'export PATH=$PATH:'"$src" >> .zshrc.1
+echo '# uncomment this line for pulseaudio/pipewire forwarding' >> .zshrc.1
+echo '#export PULSE_SERVER=localhost' >> .zshrc.1
+echo 'export PATH=$PATH:'"$src:$dest/eux-utils" >> .zshrc.1
 echo '# for wayland sessions with ibus (ibus wayland)' >> .zshrc.1
 echo '#unset GTK_IM_MODULE' >> .zshrc.1
 echo '#unset QT_IM_MODULE' >> .zshrc.1
