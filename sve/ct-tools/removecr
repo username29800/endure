@@ -1,0 +1,9 @@
+#!/bin/sh
+#run:
+#sed -i 's/\r$// removecr' to fix this script itself, then run in the endure root
+#recursively removes carriage return (^M or \r) from all files
+find . > files
+sed -i 's,^\./\.git.*,,' files
+sed -i 's,.*\?,sed -i '\''s\,\\r\,\,g'\'' &', files
+#run 'sh files' manually after excluding any targets, which still need CR
+#.git is automatically excluded

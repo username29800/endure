@@ -1,0 +1,4 @@
+## section X1: EUX config
+eux_home /home/user
+eux_user user
+eux_bin /home/user/endure/sve/build/
