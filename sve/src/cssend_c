@@ -1,0 +1,4 @@
+#!/bin/sh
+#fsource="$3"
+#fdest="$4"
+$xcp -i "$id" -OCrp -P "$port" "$fsource" $user@$hostname:"$fdest"
