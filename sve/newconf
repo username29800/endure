@@ -24,5 +24,5 @@ echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
 echo "" >> $2
 echo "r_eux_home_$1 /home/user" >> $2
-echo "#r_eux_bin_$1" >> $2
+echo "r_eux_bin_$1 /home/user/endure/sve/build" >> $2
 echo "" >> $2
